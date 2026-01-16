@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Fungal Population Genomics</title>
+<title>Nextflow – Fungal Population Genomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -108,15 +108,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#workflow-managers" id="toc-workflow-managers" class="nav-link active" data-scroll-target="#workflow-managers">Workflow managers</a></li>
+  <li><a href="#nextflow" id="toc-nextflow" class="nav-link" data-scroll-target="#nextflow">Nextflow</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fungal Population Genomics</h1>
+<h1 class="title">Nextflow</h1>
 </div>
 
 
@@ -133,10 +140,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p><a href="https://github.com/amrei-bp">Amrei Binzer-Panchal</a>.</p>
+<p>When developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a <code>workflow</code>or <code>pipeline</code>.</p>
+<p>Manual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:</p>
+<section id="workflow-managers" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-managers">Workflow managers</h2>
+<blockquote class="blockquote">
+<p>Workflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al.&nbsp;(2021) Nature Methods</p>
+</blockquote>
+<p>With workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.</p>
+<p>That means that by design the pipelines are:</p>
+<ul>
+<li>portable</li>
+<li>more time efficient (no more downtime between pipeline steps)</li>
+<li>more resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)</li>
+<li>easier to install (especially when combined with containers, or environment managers)</li>
+<li>more reproducible</li>
+</ul>
+<p>There are in principle two different flavors of workflow managers: <a href="https://www.snakemake.io">snakemake</a>, and <a href="https://www.nextflow.io">nextflow</a>. In this course we will be introducing you to <code>nexflow</code>.</p>
+</section>
+<section id="nextflow" class="level2">
+<h2 class="anchored" data-anchor-id="nextflow">Nextflow</h2>
+<p>In nextflow, your scripts are turned into <code>processes</code>, connected by <code>channels</code> that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the <code>workflow scope</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nextflow/channel-process_fqc.png" class="class img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>source: <a href="https://carpentries-incubator.github.io/workflows-nextflow/01-getting-started-with-nextflow.html">Software carpentries</a></figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.</p>
+</div>
+</div>
+<p>The executable part of the processes, the so called <code>script</code>, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the <strong>modularity</strong> of the processes allows for easy re-use of existing scripts and processes.</p>
+<p>When moving the pipeline from one system to another, the <code>script</code> stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly <strong>interoperable and portable</strong>. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..</p>
+<p>The pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very <strong>reproducible</strong>.</p>
+<p>The nextflow pipelines are extremely <strong>scalable</strong>, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.</p>
+<p>Nexflow performs automatic checks on the processes and their in- and output. It can automatically <strong>resume execution</strong> at a point of failure without having to re-compute successfully completed parts.</p>
+<p>Nextflow is open source.</p>
+<p>Here is a more visual summary of some of the points above:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nextflow/nextflow_overview.png" class="class img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>source: Maxime U Garcia, Seqera labs</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

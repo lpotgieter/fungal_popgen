@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Fungal Population Genomics</title>
+<title>nfcore introduction – Fungal Population Genomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -109,15 +109,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-makes-nf-core-pipelines-interesting-for-you" id="toc-what-makes-nf-core-pipelines-interesting-for-you" class="nav-link active" data-scroll-target="#what-makes-nf-core-pipelines-interesting-for-you">What makes nf-core pipelines interesting for you?</a></li>
+  <li><a href="#finding-and-evaluating-a-pipeline" id="toc-finding-and-evaluating-a-pipeline" class="nav-link" data-scroll-target="#finding-and-evaluating-a-pipeline">Finding and evaluating a pipeline</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">nfcore introduction</h1>
 </div>
 
 
@@ -134,9 +141,80 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<p>This page has been provided by <a href="https://github.com/amrei-bp">Amrei Binzer-Panchal</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/nf-core_logo.png" class="class img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>source: <a href="https://nf-co.re/">nf-core</a></figcaption>
+</figure>
+</div>
+<p>Nf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.</p>
+<p>Here are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/nf-core_popular_pipelines.png" class="class img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>source: <a href="https://nf-co.re/">nf-core</a></figcaption>
+</figure>
+</div>
+<p>All nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While nf-core is fantastic, please be aware that their pipelines are developed and maintained (or not maintained) by the community. <strong>You should not use the pipelines as a black box</strong>, but as a tool you need to understand. The <strong>responsibility for the end results is still yours</strong>, so you need to see if your data is suited for the analysis (good enough quality?), and if the analysis is suitable for your data!</p>
+</div>
+</div>
+<p>However, nf-core does not only develop pipelines.</p>
+<p>The community also develops:</p>
+<ul>
+<li>processes that they make available as <code>modules</code> (and optimizes them too).</li>
+<li>training material for all user classes.</li>
+<li>best practices for documentation.</li>
+<li>templates for development.</li>
+</ul>
+<p>There is a weekly online helpdesk, and even a podcast.</p>
+<section id="what-makes-nf-core-pipelines-interesting-for-you" class="level3">
+<h3 class="anchored" data-anchor-id="what-makes-nf-core-pipelines-interesting-for-you">What makes nf-core pipelines interesting for you?</h3>
+<p>Nf-core provides already developed pipelines for many different data sets. Likely, a pipelines exists that you can use on your data. The <strong>documentation of the pipelines follows nf-core guidelines</strong> and is extensive and informative - it is easy to understand what the pipeline does and how it works. All <strong>output is explained in detail</strong>, with links to more extensive documentation.</p>
+<p>Once you have understood how to run a nf-core pipeline their <strong>consistency and standardization</strong> means you will know most about running a different one.</p>
+<p>Using the nf-core launcher, will <strong>check your input</strong>, and automatically <strong>generate commands and configuration</strong> files.</p>
+<p>And this is on top of all nextflow functionality such as portability, reproducibility and the resume-at-fault option!</p>
+</section>
+<section id="finding-and-evaluating-a-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="finding-and-evaluating-a-pipeline">Finding and evaluating a pipeline</h2>
+<p>From the nf-core homepage, we can search for pipelines. We are going to demo the <a href="https://nf-co.re/rnaseq/3.20.0">rnaseq</a> pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/rnaseq_landing_page.png" class="img-fluid figure-img"></p>
+<figcaption>rnaseq landing page</figcaption>
+</figure>
+</div>
+<p>Under the <code>Usage</code>, you will find a lot of information that describes the pipeline, including input information, the <code>samplesheet.csv</code> (which we will have to set up with our data later).</p>
+<p>Under the <code>Parameters</code> tab you will find information on all of the things that we will set up in the next step.</p>
+<p>Under the <code>Output</code> tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Look through the available pipelines and see if there is one that is interesting for you and your project.</p>
+<p>In the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.</p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -9,6 +9,23 @@ website:
         text: Home
       - about.qmd
 
+sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Background knowledge"
+        contents:
+          - course_linux.qmd
+          - course_nextflow.qmd
+          - course_nf-core.qmd
+          - text: "Environment managers: Pixi"
+            href: course_pixi.qmd
+          - course_containers.qmd
+          - course_ai.qmd
+          - course_quarto.qmd
+
 format:
   html:
     theme:

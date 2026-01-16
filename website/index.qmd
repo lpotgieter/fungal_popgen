@@ -1,5 +1,5 @@
 ---
-title: "fungal popgen"
+title: "Fungal Population Genomics"
 ---
 
 This is a Quarto website.

@@ -24,13 +24,14 @@ website:
             href: course_pixi.qmd
           - course_containers.qmd
           - course_ai.qmd
+          - course_ai_literacy.qmd
           - course_quarto.qmd
       - section: "Practicals"
         contents:
           - course_sarek.qmd
-          - course_quality_control.qmd
           - course_pop_stats.qmd
           - course_pop_structure.qmd
+          - course_genome_annotation.qmd
 
 format:
   html:

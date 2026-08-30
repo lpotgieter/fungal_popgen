@@ -2,50 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_sarek.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.241Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_pixi.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_genome_annotation.html</loc>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_linux.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/index.html</loc>
-    <lastmod>2026-08-30T13:08:17.042Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.302Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_nf-core.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_nextflow.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_ai.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/about.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_containers.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_structure.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_stats.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_ai_literacy.html</loc>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_quarto.html</loc>
-    <lastmod>2026-08-30T13:08:16.964Z</lastmod>
+    <lastmod>2026-08-30T13:58:45.240Z</lastmod>
   </url>
 </urlset>

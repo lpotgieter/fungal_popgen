@@ -32,6 +32,7 @@ website:
           - course_pop_stats.qmd
           - course_pop_structure.qmd
           - course_genome_annotation.qmd
+          - course_solutions.qmd
 
 format:
   html:

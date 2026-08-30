@@ -1,0 +1,147 @@
+---
+title: "Spoiler: Solutions"
+---
+
+Extract scaffold 1
+```{.bash}
+vcftools --vcf /proj/mykopat-popgen-c/course_files/2_source_data/part2_vcf_manipulation/Phenig_final_0619.recode.vcf --chr scaffold_1 --recode --recode-INFO-all --out scaffold1
+```
+Remove indels
+```{.bash}
+vcftools --vcf scaffold_1.recode.vcf --remove-indels --recode --out scaffold_1_noindels
+```
+Keep biallelic sites only
+```{.bash}
+vcftools --vcf scaffold_1_noindels.recode.vcf --min-alleles 2 --max-alleles 2 --recode --out scaffold_1_noindels_biallelic 
+```
+Depth
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --depth --out scaffold_1_noindels_biallelic
+```
+Site depth
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --site-depth --out scaffold_1_noindels_biallelic 
+```
+Site mean depth
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --site-mean-depth --out scaffold_1_noindels_biallelic 
+```
+Tajima's D
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --TajimaD 5000 --out scaffold_1_noindels_biallelic.tajd5000
+```
+Pi per site
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --site-pi --out scaffold_1_noindels_biallelic
+```
+Pi in windows
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --window-pi 5000 --out scaffold_1_noindels_biallelic.pi5000
+```
+Keeping only certain individuals from populations
+```{.bash}
+vcftools --vcf scaffold_1_noindels_biallelic.recode.vcf --keep pop_to_keep --recode --out scaffold_1_pop
+```
+Rerun Tajima's D on these VCFs/populations you have chosen. Of course, you can use the keep flag on the complete VCF without writing to a new VCF, saving some space.
+
+FST
+```{.bash}
+vcftools-haploid --vcf scaffold_1_noindels_biallelic.recode.vcf --weir-fst-pop pop1 --weir-fst-pop pop2 --fst-window-size --out fst_pop1_vs_pop2
+```
+
+## Plotting in R
+Here I just show you an example from the idepth file. You can remove lines not relevant for your populations. I just plotted across the entire dataset
+
+```{.r}
+library(dplyr)
+library(ggplot2)
+
+#Plotting .idepth file 
+idepth = read.delim("wherever_your_file_is", header = T)
+
+names(idepth)[names(idepth) == 'INDV'] <- 'ID'
+
+idepth = idepth %>%
+  mutate(Population = case_when(
+    startsWith(ID, "BIL") ~ "bil",
+    startsWith(ID, "BNP") ~ "bnp",
+    startsWith(ID, "Her") ~ "her",
+    startsWith(ID, "Iss") ~ "iss",
+    startsWith(ID, "Kai") ~ "kai",
+    startsWith(ID, "Koi") ~ "koi",
+    startsWith(ID, "Kot") ~ "kot",
+    startsWith(ID, "Luu") ~ "luu",
+    startsWith(ID, "Met") ~ "met",
+    startsWith(ID, "Mor") ~ "mor",
+    startsWith(ID, "Mus") ~ "mus",
+    startsWith(ID, "Myl") ~ "myl",
+    startsWith(ID, "Pam") ~ "pam",
+    startsWith(ID, "Pat") ~ "pat",
+    startsWith(ID, "Pet") ~ "pet",
+    startsWith(ID, "Puk") ~ "puk",
+    startsWith(ID, "Rus") ~ "rus",
+    startsWith(ID, "Sig") ~ "sig",
+    startsWith(ID, "Skj") ~ "skj",
+    startsWith(ID, "eSK") ~ "skj",
+    startsWith(ID, "Spk") ~ "spk",
+    startsWith(ID, "Sus") ~ "sus",
+    startsWith(ID, "Ulv") ~ "ulv",
+    startsWith(ID, "Van") ~ "van",
+    startsWith(ID, "Ves") ~ "ves"))
+    
+idepth = idepth %>%
+      mutate(Location = case_when(
+        startsWith(ID, "BIL") ~ "Sweden",
+        startsWith(ID, "BNP") ~ "Poland",
+        startsWith(ID, "Her") ~ "SWF",
+        startsWith(ID, "Iss") ~ "NEF",
+        startsWith(ID, "Kai") ~ "NEF",
+        startsWith(ID, "Koi") ~ "NEF",
+        startsWith(ID, "Kot") ~ "SWF",
+        startsWith(ID, "Luu") ~ "SWF",
+        startsWith(ID, "Met") ~ "SWF",
+        startsWith(ID, "Mor") ~ "Norway",
+        startsWith(ID, "Mus") ~ "SWF",
+        startsWith(ID, "Myl") ~ "SWF",
+        startsWith(ID, "Pam") ~ "NEF",
+        startsWith(ID, "Pat") ~ "NEF",
+        startsWith(ID, "Pet") ~ "SWF",
+        startsWith(ID, "Puk") ~ "SWF",
+        startsWith(ID, "Rus") ~ "Russia",
+        startsWith(ID, "Sig") ~ "Norway",
+        startsWith(ID, "Skj") ~ "Norway",
+        startsWith(ID, "eSK") ~ "Norway",
+        startsWith(ID, "Spk") ~ "Norway",
+        startsWith(ID, "Sus") ~ "SWF",
+        startsWith(ID, "Ulv") ~ "NEF",
+        startsWith(ID, "Van") ~ "NEF",
+        startsWith(ID, "Ves") ~ "SWF"
+      ))
+
+#try with and without face_wrap
+ggplot(idepth, aes(x=ID, y =MEAN_DEPTH, fill=Population)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~Location, scales = "free_x")
+```
+
+## Plotting Tajima's D all vs specific populations
+You can change the type of plots you make. Change headers, xlab, and ylab
+
+```{.r}
+#Plotting Tajima's D
+taj.combined = read.delim("teaching/forest_popgen/all.tajd5000.Tajima.D", header = T)
+taj.bil = read.delim("teaching/forest_popgen/bil.tajd5000.Tajima.D", header = T)
+
+#Mutating the add a column for population
+taj.combined = mutate(taj.combined, Population = "All")
+taj.bil = mutate(taj.bil, Population = "BIL")
+
+#combining the dataframes
+combining.tajd = c('taj.combined', 'taj.bil')
+x.list = lapply(combining.tajd, get)
+combined.tajd = do.call(rbind, x.list)
+
+#Plotting combined Tajima's D
+ggplot(combined.tajd, aes(x= BIN_START, y = TajimaD, col=Population)) +
+  geom_line() 
+  ```

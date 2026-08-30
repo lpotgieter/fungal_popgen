@@ -25,6 +25,12 @@ website:
           - course_containers.qmd
           - course_ai.qmd
           - course_quarto.qmd
+      - section: "Practicals"
+        contents:
+          - course_sarek.qmd
+          - course_quality_control.qmd
+          - course_pop_stats.qmd
+          - course_pop_structure.qmd
 
 format:
   html:

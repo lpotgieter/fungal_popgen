@@ -2,6 +2,13 @@
 title: "Fungal Population Genomics"
 ---
 
-This is a Quarto website.
+This course consists of several different parts. The first part, is the pre-course material in the form of lectures and discussions. The second part is a practical in-person session.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Practical Part 1
+During the first part of the practical, we will set up a typical environment with Pixi, set up a Nextflow parameter and configuration, and run the pipeline. We believe it is important to have experience in setting these pipelines up.
+
+## Practical Part 2
+For this course, we will be using the data from [this paper](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.16369): "Population genomics of a forest fungus reveals high gene flow and climate adaptation signatures" by Sønstebø, J. H. et. al. (2022). I have selected this paper because the data complies incredibly well with [FAIR Principles](https://www.go-fair.org/fair-principles/). The genomic data we will use is hosted [here](https://datadryad.org/dataset/doi:10.5061/dryad.7d7wm37wr). 
+
+## Discussion Material
+In addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it. 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Markdown and Quarto – Fungal Population Genomics</title>
+<title>Spoiler: Solutions – Fungal Population Genomics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_linux.html">Background knowledge</a></li><li class="breadcrumb-item"><a href="./course_quarto.html">Introduction to Markdown and Quarto</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_sarek.html">Practicals</a></li><li class="breadcrumb-item"><a href="./course_solutions.html">Spoiler: Solutions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_quarto.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Markdown and Quarto</span></a>
   </div>
 </li>
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_solutions.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_solutions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Spoiler: Solutions</span></a>
   </div>
 </li>
@@ -285,27 +285,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#markdown-syntax" id="toc-markdown-syntax" class="nav-link" data-scroll-target="#markdown-syntax">Markdown Syntax</a></li>
-  <li><a href="#using-markdown" id="toc-using-markdown" class="nav-link" data-scroll-target="#using-markdown">Using Markdown</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a>
-  <ul class="collapse">
-  <li><a href="#installing-quarto-on-your-machine" id="toc-installing-quarto-on-your-machine" class="nav-link" data-scroll-target="#installing-quarto-on-your-machine">Installing Quarto on your Machine</a></li>
-  <li><a href="#creating-a-project" id="toc-creating-a-project" class="nav-link" data-scroll-target="#creating-a-project">Creating a Project</a></li>
-  <li><a href="#adding-files-and-figures" id="toc-adding-files-and-figures" class="nav-link" data-scroll-target="#adding-files-and-figures">Adding Files and Figures</a></li>
-  <li><a href="#adding-analyses" id="toc-adding-analyses" class="nav-link" data-scroll-target="#adding-analyses">Adding Analyses</a></li>
-  <li><a href="#viewing-the-project" id="toc-viewing-the-project" class="nav-link" data-scroll-target="#viewing-the-project">Viewing the Project</a></li>
-  <li><a href="#publishing-and-sharing-the-project" id="toc-publishing-and-sharing-the-project" class="nav-link" data-scroll-target="#publishing-and-sharing-the-project">Publishing and Sharing the Project</a></li>
-  </ul></li>
+  <li><a href="#plotting-in-r" id="toc-plotting-in-r" class="nav-link active" data-scroll-target="#plotting-in-r">Plotting in R</a></li>
+  <li><a href="#plotting-tajimas-d-all-vs-specific-populations" id="toc-plotting-tajimas-d-all-vs-specific-populations" class="nav-link" data-scroll-target="#plotting-tajimas-d-all-vs-specific-populations">Plotting Tajima’s D all vs specific populations</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_linux.html">Background knowledge</a></li><li class="breadcrumb-item"><a href="./course_quarto.html">Introduction to Markdown and Quarto</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_sarek.html">Practicals</a></li><li class="breadcrumb-item"><a href="./course_solutions.html">Spoiler: Solutions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Markdown and Quarto</h1>
+<h1 class="title">Spoiler: Solutions</h1>
 </div>
 
 
@@ -322,229 +312,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Markdown is a lightweight markup language for text editing. All of the documents you have seen in this course have been formatted with markdown. The platform this course website has been built on is called Quarto and implements markdown. In this section, we’ll look at some of the post commonly used markdown syntax, using Quarto to create lab notebooks, presentations, automate analyses, and host websites like this one.</p>
-<p>Recently, a lot of open-source books like <a href="https://r4ds.hadley.nz">R for Data Science</a> and <a href="https://wesmckinney.com/book/">Python for Data Science</a> have been created with Markdown using Quarto. The code for these books have also been <a href="https://quarto.org/docs/books/">publicly released</a>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please bookmark these books for your students! They are excellent resources!</p>
-</div>
-</div>
+<p>Extract scaffold 1</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> /proj/mykopat-popgen-c/course_files/2_source_data/part2_vcf_manipulation/Phenig_final_0619.recode.vcf <span class="at">--chr</span> scaffold_1 <span class="at">--recode</span> <span class="at">--recode-INFO-all</span> <span class="at">--out</span> scaffold1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Remove indels</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1.recode.vcf <span class="at">--remove-indels</span> <span class="at">--recode</span> <span class="at">--out</span> scaffold_1_noindels</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Keep biallelic sites only</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels.recode.vcf <span class="at">--min-alleles</span> 2 <span class="at">--max-alleles</span> 2 <span class="at">--recode</span> <span class="at">--out</span> scaffold_1_noindels_biallelic </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Depth</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--depth</span> <span class="at">--out</span> scaffold_1_noindels_biallelic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Site depth</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--site-depth</span> <span class="at">--out</span> scaffold_1_noindels_biallelic </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Site mean depth</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--site-mean-depth</span> <span class="at">--out</span> scaffold_1_noindels_biallelic </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Tajima’s D</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--TajimaD</span> 5000 <span class="at">--out</span> scaffold_1_noindels_biallelic.tajd5000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pi per site</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--site-pi</span> <span class="at">--out</span> scaffold_1_noindels_biallelic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pi in windows</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--window-pi</span> 5000 <span class="at">--out</span> scaffold_1_noindels_biallelic.pi5000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Keeping only certain individuals from populations</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--keep</span> pop_to_keep <span class="at">--recode</span> <span class="at">--out</span> scaffold_1_pop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Rerun Tajima’s D on these VCFs/populations you have chosen. Of course, you can use the keep flag on the complete VCF without writing to a new VCF, saving some space.</p>
+<p>FST</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools-haploid</span> <span class="at">--vcf</span> scaffold_1_noindels_biallelic.recode.vcf <span class="at">--weir-fst-pop</span> pop1 <span class="at">--weir-fst-pop</span> pop2 <span class="at">--fst-window-size</span> <span class="at">--out</span> fst_pop1_vs_pop2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="plotting-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-in-r">Plotting in R</h2>
+<p>Here I just show you an example from the idepth file. You can remove lines not relevant for your populations. I just plotted across the entire dataset</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Plotting .idepth file </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>idepth <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">"wherever_your_file_is"</span>, <span class="at">header =</span> T)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(idepth)[<span class="fu">names</span>(idepth) <span class="sc">==</span> <span class="st">'INDV'</span>] <span class="ot">&lt;-</span> <span class="st">'ID'</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>idepth <span class="ot">=</span> idepth <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Population =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"BIL"</span>) <span class="sc">~</span> <span class="st">"bil"</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"BNP"</span>) <span class="sc">~</span> <span class="st">"bnp"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Her"</span>) <span class="sc">~</span> <span class="st">"her"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Iss"</span>) <span class="sc">~</span> <span class="st">"iss"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Kai"</span>) <span class="sc">~</span> <span class="st">"kai"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Koi"</span>) <span class="sc">~</span> <span class="st">"koi"</span>,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Kot"</span>) <span class="sc">~</span> <span class="st">"kot"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Luu"</span>) <span class="sc">~</span> <span class="st">"luu"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Met"</span>) <span class="sc">~</span> <span class="st">"met"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Mor"</span>) <span class="sc">~</span> <span class="st">"mor"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Mus"</span>) <span class="sc">~</span> <span class="st">"mus"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Myl"</span>) <span class="sc">~</span> <span class="st">"myl"</span>,</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Pam"</span>) <span class="sc">~</span> <span class="st">"pam"</span>,</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Pat"</span>) <span class="sc">~</span> <span class="st">"pat"</span>,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Pet"</span>) <span class="sc">~</span> <span class="st">"pet"</span>,</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Puk"</span>) <span class="sc">~</span> <span class="st">"puk"</span>,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Rus"</span>) <span class="sc">~</span> <span class="st">"rus"</span>,</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Sig"</span>) <span class="sc">~</span> <span class="st">"sig"</span>,</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Skj"</span>) <span class="sc">~</span> <span class="st">"skj"</span>,</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"eSK"</span>) <span class="sc">~</span> <span class="st">"skj"</span>,</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Spk"</span>) <span class="sc">~</span> <span class="st">"spk"</span>,</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Sus"</span>) <span class="sc">~</span> <span class="st">"sus"</span>,</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Ulv"</span>) <span class="sc">~</span> <span class="st">"ulv"</span>,</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Van"</span>) <span class="sc">~</span> <span class="st">"van"</span>,</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">startsWith</span>(ID, <span class="st">"Ves"</span>) <span class="sc">~</span> <span class="st">"ves"</span>))</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>idepth <span class="ot">=</span> idepth <span class="sc">%&gt;%</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Location =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"BIL"</span>) <span class="sc">~</span> <span class="st">"Sweden"</span>,</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"BNP"</span>) <span class="sc">~</span> <span class="st">"Poland"</span>,</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Her"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Iss"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Kai"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Koi"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Kot"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Luu"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Met"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Mor"</span>) <span class="sc">~</span> <span class="st">"Norway"</span>,</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Mus"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Myl"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Pam"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Pat"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Pet"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Puk"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Rus"</span>) <span class="sc">~</span> <span class="st">"Russia"</span>,</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Sig"</span>) <span class="sc">~</span> <span class="st">"Norway"</span>,</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Skj"</span>) <span class="sc">~</span> <span class="st">"Norway"</span>,</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"eSK"</span>) <span class="sc">~</span> <span class="st">"Norway"</span>,</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Spk"</span>) <span class="sc">~</span> <span class="st">"Norway"</span>,</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Sus"</span>) <span class="sc">~</span> <span class="st">"SWF"</span>,</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Ulv"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Van"</span>) <span class="sc">~</span> <span class="st">"NEF"</span>,</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>        <span class="fu">startsWith</span>(ID, <span class="st">"Ves"</span>) <span class="sc">~</span> <span class="st">"SWF"</span></span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="co">#try with and without face_wrap</span></span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(idepth, <span class="fu">aes</span>(<span class="at">x=</span>ID, <span class="at">y =</span>MEAN_DEPTH, <span class="at">fill=</span>Population)) <span class="sc">+</span></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Location, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="markdown-syntax" class="level2">
-<h2 class="anchored" data-anchor-id="markdown-syntax">Markdown Syntax</h2>
-<p>There are plenty of really great cheatsheets like this one from <a href="https://www.markdownguide.org/basic-syntax/">Markdown Guide</a> as well as <a href="https://www.markdownguide.org/cheat-sheet/">this one</a>. We’ll go through some of these details with you live rather than copying and pasting really good tutorials here.</p>
-</section>
-<section id="using-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="using-markdown">Using Markdown</h2>
-<p>There are many different platforms that use Markdown syntax in text editing. At SLUBI, we have a strong preference towards <a href="https://code.visualstudio.com">Visual Studio Code</a> or its open-source alternative, <a href="https://vscodium.com">VSCodium</a>. To use all of the features, you need to install the Markdown extension.</p>
-<p>To access to Extensions, either navigate with shortcuts (these are operating system depdenent and can be set by users, so we won’t go into that, but feel free to explore), from the <code>View</code> dropdown menu, or from the <code>Extensions</code> tab on the left.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/markdown_view.png" class="img-fluid figure-img"></p>
-<figcaption>Extensions from <code>View</code></figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/markdown_ext_short.png" class="img-fluid figure-img"></p>
-<figcaption>Extensions from the shortcut</figcaption>
-</figure>
-</div>
-<p>In the search bar, you can search for general Markdown viewers and install them. For this course, we will use Quarto. Install that extension. Please also note the verified tick.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/markdown_ext_search.png" class="img-fluid figure-img"></p>
-<figcaption>Quarto extension to install</figcaption>
-</figure>
-</div>
-<p>The <code>Markdown All in One</code> extension is also an interesting case to look at. It has a lot of downloads despite not being verified by an organisation. In general, be wary when installing extensions. Opt for ones that are installed often, as this one is. If possible, try to use verified extensions. In the age of information security we live in, it is becoming more important to use trusted content than whatever you find on the internet.</p>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p><a href="https://quarto.org">Quarto</a> is an open-source technical and scientific reporting and publishing system.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/quarto_landing_page.png" class="img-fluid figure-img"></p>
-<figcaption>Quarto landing page</figcaption>
-</figure>
-</div>
-<section id="installing-quarto-on-your-machine" class="level3">
-<h3 class="anchored" data-anchor-id="installing-quarto-on-your-machine">Installing Quarto on your Machine</h3>
-<p>We have already installed the extension that allows us to use a bunch of really cool features in VSCode with Quarto, but we need to have the backend installed on our machines as well. To install the program, you will click on the <code>Get Started</code> link on the homepage, download the program that’s suited to your operating system, and install it. The <code>Guide</code> link here also takes you to really easy tutorials on how to set up a variety of other uses of Quarto that we simply don’t have time for in this course.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All instructions for creating, editing, previewing, and rendering projects will be shown in VSCode and it will not be specified over and over</p>
-</div>
-</div>
-</section>
-<section id="creating-a-project" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-project">Creating a Project</h3>
-<p>Under the previously shown <code>View</code> option, navigate to the <code>Command Palette</code>. A dropdown menu at the top will start with a &gt;. Type <code>quarto</code> and a list of functions will be shown. The order will be different based on what you’ve used and what you’ve used most recently.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/quarto_funct.png" class="img-fluid figure-img"></p>
-<figcaption>Quarto functions</figcaption>
-</figure>
-</div>
-<p>We will <code>Create a project</code> and create a <code>Website</code> for the purpose of this course.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/quarto_proj_type.png" class="img-fluid figure-img"></p>
-<figcaption>Creating a Project</figcaption>
-</figure>
-</div>
-<section id="structure-of-a-project" class="level4">
-<h4 class="anchored" data-anchor-id="structure-of-a-project">Structure of a Project</h4>
-<p>All Quarto projects have a YAML file with information about the project called <code>_quarto.yml</code> as well as an <code>index.qmd</code> file. The landing page of your website is the <code>index.qmd</code> file, while the <code>_quarto.yml</code> file contains all of the visual aspects of your website. We’ll spend a bit of time looking at the design of our course website so that you can see how it looks behind the scenes. Hopefully, with a website you know as well as you do by now, this will make things a lot more tangible!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Fun fact: YAML stands for “yet another markup language”</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="adding-files-and-figures" class="level3">
-<h3 class="anchored" data-anchor-id="adding-files-and-figures">Adding Files and Figures</h3>
-<p>Often, we don’t just need a landing page like the <code>index.qmd</code> file, but we want different pages, as we have here. You can add blank documents with the .qmd extenstion. It is important for each file to have a title section so that it can be displayed properly and linked with your other pages. Update the <code>_quarto.yml</code> file to include this page in your table of contents or navigation bar (depending on what you opted to use), or simply link to the file with a hyperlink as we have done on our landing page</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remeber to give your files a good name with no spaces in them. Also remember to add the .qmd extension</p>
-</div>
-</div>
-<p>To add external figures to your document as we have done here with screenshots, you can simply link to the figure by its relative path, as described <a href="https://quarto.org/docs/authoring/figures.html">here</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is good practice to have your images in a folder inside of your Quarto project in case Future You forgets that a figure is linked to a document and you move the folder containing all of your photos, for example. It also makes it much easier to put everything into a repository on GitHub to launch your site</p>
-</div>
-</div>
-</section>
-<section id="adding-analyses" class="level3">
-<h3 class="anchored" data-anchor-id="adding-analyses">Adding Analyses</h3>
-<p>Quarto is really good at implementing other programming languages within it. You can use R within it seamlessly. There is support for a large number of other programming languages within Quarto, but this course is only going to showcase the use of R.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You will have to install the <code>R</code> and <code>R syntax</code> extensions for this to work in VSCode</p>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, palmerpenguins)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_smooth()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="course_quarto_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>If you have analyses that you have to repeat across several projects, these documents can be shared to create uniformity among your produced results, and your students do not need to reinvent the wheel. With several pages being supported in a single Quarto project, you also reduce the potential messiness that is introduced whenever you onboard a new student.</p>
-</section>
-<section id="viewing-the-project" class="level3">
-<h3 class="anchored" data-anchor-id="viewing-the-project">Viewing the Project</h3>
-<section id="previewing" class="level4">
-<h4 class="anchored" data-anchor-id="previewing">Previewing</h4>
-<p>As you go along, you might be interested in seeing what your pages look like. In the terminal, type</p>
-<p><code>quarto preview</code></p>
-<p>or simply click the <code>preview</code> button in VSCode and a side by side preview will open where you can click through your indexed pages.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/quarto/quarto_render.png" class="img-fluid figure-img"></p>
-<figcaption>VSCode Preview function</figcaption>
-</figure>
-</div>
-</section>
-<section id="different-views" class="level4">
-<h4 class="anchored" data-anchor-id="different-views">Different Views</h4>
-<p>From the Command Palette, you can select whether you would like to view your document in source mode or in visual mode. The difference is mostly that you can interact with the document in the way it will be rendered in visual mode. For some people, visual mode is a lot more intuative, and there is no right or wrong way to interact with your documents.</p>
-</section>
-</section>
-<section id="publishing-and-sharing-the-project" class="level3">
-<h3 class="anchored" data-anchor-id="publishing-and-sharing-the-project">Publishing and Sharing the Project</h3>
-<p>With Quarto, you can render to HTML, Word, and PDF formats. To render individual files into PDF, add the information from <a href="https://quarto.org/docs/output-formats/pdf-basics.html">this</a> Quarto guide into the header of your document.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">title:</span> <span class="st">"My document"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">format:</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">pdf:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">toc:</span> true</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">number-sections:</span> true</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">colorlinks:</span> true</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You will have to install a recent distribution of TeX for this via your terminal</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For this course, we are simply going to render our documents into HTML format. In the next section, we will cover how to host Quarto pages on GitHub.</p>
+<section id="plotting-tajimas-d-all-vs-specific-populations" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-tajimas-d-all-vs-specific-populations">Plotting Tajima’s D all vs specific populations</h2>
+<p>You can change the type of plots you make. Change headers, xlab, and ylab</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plotting Tajima's D</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>taj.combined <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">"teaching/forest_popgen/all.tajd5000.Tajima.D"</span>, <span class="at">header =</span> T)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>taj.bil <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">"teaching/forest_popgen/bil.tajd5000.Tajima.D"</span>, <span class="at">header =</span> T)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Mutating the add a column for population</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>taj.combined <span class="ot">=</span> <span class="fu">mutate</span>(taj.combined, <span class="at">Population =</span> <span class="st">"All"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>taj.bil <span class="ot">=</span> <span class="fu">mutate</span>(taj.bil, <span class="at">Population =</span> <span class="st">"BIL"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#combining the dataframes</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>combining.tajd <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'taj.combined'</span>, <span class="st">'taj.bil'</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>x.list <span class="ot">=</span> <span class="fu">lapply</span>(combining.tajd, get)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>combined.tajd <span class="ot">=</span> <span class="fu">do.call</span>(rbind, x.list)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Plotting combined Tajima's D</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combined.tajd, <span class="fu">aes</span>(<span class="at">x=</span> BIN_START, <span class="at">y =</span> TajimaD, <span class="at">col=</span>Population)) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Genome Annotation</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_sarek.html">Practicals</a></li><li class="breadcrumb-item"><a href="./course_genome_annotation.html">Genome Annotation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,6 +187,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./course_ai_literacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI Literacy and Implementation at VF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./course_quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Markdown and Quarto</span></a>
   </div>
@@ -209,9 +215,6 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">course_quality_control.qmd</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./course_pop_stats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Population Statistics</span></a>
@@ -223,6 +226,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Population Structure</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course_genome_annotation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Genome Annotation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spoiler: Solutions</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -230,13 +245,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#gene-prediction" id="toc-gene-prediction" class="nav-link active" data-scroll-target="#gene-prediction">Gene Prediction</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_sarek.html">Practicals</a></li><li class="breadcrumb-item"><a href="./course_genome_annotation.html">Genome Annotation</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Genome Annotation</h1>
 </div>
@@ -255,8 +276,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>It is all good and well to find signatures of selection across the genome, but if a genome is not annotated, you cannot say much more beyond “region xyz has a negative Tajima’s D”, for instance. In this course, you got a GFF3 with an annotation, but if you work with your own system, you might not have this.</p>
+<section id="gene-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="gene-prediction">Gene Prediction</h2>
+<p>The first step is to determine where genes start and end.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

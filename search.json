@@ -1,62 +1,62 @@
 [
   {
-    "objectID": "course_quarto.html",
-    "href": "course_quarto.html",
-    "title": "Introduction to Markdown and Quarto",
+    "objectID": "course_pixi.html",
+    "href": "course_pixi.html",
+    "title": "Introduction to Pixi",
     "section": "",
-    "text": "Markdown is a lightweight markup language for text editing. All of the documents you have seen in this course have been formatted with markdown. The platform this course website has been built on is called Quarto and implements markdown. In this section, we’ll look at some of the post commonly used markdown syntax, using Quarto to create lab notebooks, presentations, automate analyses, and host websites like this one.\nRecently, a lot of open-source books like R for Data Science and Python for Data Science have been created with Markdown using Quarto. The code for these books have also been publicly released.\n\n\n\n\n\n\nImportant\n\n\n\nPlease bookmark these books for your students! They are excellent resources!",
+    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Introduction to Markdown and Quarto"
+      "Environment managers: Pixi"
     ]
   },
   {
-    "objectID": "course_quarto.html#introduction",
-    "href": "course_quarto.html#introduction",
-    "title": "Introduction to Markdown and Quarto",
+    "objectID": "course_pixi.html#introduction",
+    "href": "course_pixi.html#introduction",
+    "title": "Introduction to Pixi",
     "section": "",
-    "text": "Markdown is a lightweight markup language for text editing. All of the documents you have seen in this course have been formatted with markdown. The platform this course website has been built on is called Quarto and implements markdown. In this section, we’ll look at some of the post commonly used markdown syntax, using Quarto to create lab notebooks, presentations, automate analyses, and host websites like this one.\nRecently, a lot of open-source books like R for Data Science and Python for Data Science have been created with Markdown using Quarto. The code for these books have also been publicly released.\n\n\n\n\n\n\nImportant\n\n\n\nPlease bookmark these books for your students! They are excellent resources!",
+    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Introduction to Markdown and Quarto"
+      "Environment managers: Pixi"
     ]
   },
   {
-    "objectID": "course_quarto.html#markdown-syntax",
-    "href": "course_quarto.html#markdown-syntax",
-    "title": "Introduction to Markdown and Quarto",
-    "section": "Markdown Syntax",
-    "text": "Markdown Syntax\nThere are plenty of really great cheatsheets like this one from Markdown Guide as well as this one. We’ll go through some of these details with you live rather than copying and pasting really good tutorials here.",
+    "objectID": "course_pixi.html#setting-up-an-environment",
+    "href": "course_pixi.html#setting-up-an-environment",
+    "title": "Introduction to Pixi",
+    "section": "Setting Up An Environment",
+    "text": "Setting Up An Environment\nYou should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.\nHere, we will create a project called name_sida_training (please use your own name to avoid creating multiple environments with the same name). We are adding the conda-forge and bioconda channels with the -c flag.\npixi init name_sida_training -c conda-forge -c bioconda\nPixi will create a folder named name_sida_training with a a file pixi.toml. Let’s have a look at that file!\n\n\n\n\n\n\nTip\n\n\n\n\n\nHere is the code for changing directories, listing files, and viewing the contents of a file:\ncd name_sida_training\nls\nless pixi.toml\nTo exit the less view, press q for quit.\n\n\n\n\npixi.toml\nThe .toml file give your information about your project. Let’s have a look at one I made one my Mac before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"sida_quarto\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\n \n\n\n\n\n\n\nNote\n\n\n\nYour current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the -p linux-64 flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.\nIf you are adding a platform that doesn’t natively run on your OS (e.g. adding Linux when running on Windows) be sure to add the OS you are running your system on as well!\n\n\nOnce you have used the environment, or added a dependency/tool to it, you will find yet another file, called pixi.lock.\n\n\npixi.lock\nThe .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.\n\n\n\n\n\n\nImportant\n\n\n\nDo not delete the .toml or .lock files, or you will break your environment!",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Introduction to Markdown and Quarto"
+      "Environment managers: Pixi"
     ]
   },
   {
-    "objectID": "course_quarto.html#using-markdown",
-    "href": "course_quarto.html#using-markdown",
-    "title": "Introduction to Markdown and Quarto",
-    "section": "Using Markdown",
-    "text": "Using Markdown\nThere are many different platforms that use Markdown syntax in text editing. At SLUBI, we have a strong preference towards Visual Studio Code or its open-source alternative, VSCodium. To use all of the features, you need to install the Markdown extension.\nTo access to Extensions, either navigate with shortcuts (these are operating system depdenent and can be set by users, so we won’t go into that, but feel free to explore), from the View dropdown menu, or from the Extensions tab on the left.\n\n\n\nExtensions from View\n\n\n\n\n\nExtensions from the shortcut\n\n\nIn the search bar, you can search for general Markdown viewers and install them. For this course, we will use Quarto. Install that extension. Please also note the verified tick.\n\n\n\nQuarto extension to install\n\n\nThe Markdown All in One extension is also an interesting case to look at. It has a lot of downloads despite not being verified by an organisation. In general, be wary when installing extensions. Opt for ones that are installed often, as this one is. If possible, try to use verified extensions. In the age of information security we live in, it is becoming more important to use trusted content than whatever you find on the internet.",
+    "objectID": "course_pixi.html#adding-dependencies",
+    "href": "course_pixi.html#adding-dependencies",
+    "title": "Introduction to Pixi",
+    "section": "Adding Dependencies",
+    "text": "Adding Dependencies\nAdding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.\nTo do this, we use the pixi add function. Let’s try adding Quarto to our environments (we will use Quarto extensively in this course!)\n\n\n\n\n\n\nImportant\n\n\n\nYou must be in the folder of the project to add software!\n\n\npixi add quarto\n\n\n\n\n\n\nTip\n\n\n\n\n\nIf you are unsure of how a function works, you can always query it, usually with the --help or -h flags. Here’s how it would look for the pixi add function\npixi add --help\nA general rule of thumb is that a single hyphen - is followed by a single letter flag, while double hyphens -- are usually followed by multi-letter flags\n\n\n\nHere is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include Quarto.\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"sida_quarto\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\nquarto = \"&gt;=1.7.32,&lt;2\"",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Introduction to Markdown and Quarto"
+      "Environment managers: Pixi"
     ]
   },
   {
-    "objectID": "course_quarto.html#quarto",
-    "href": "course_quarto.html#quarto",
-    "title": "Introduction to Markdown and Quarto",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto is an open-source technical and scientific reporting and publishing system.\n\n\n\nQuarto landing page\n\n\n\nInstalling Quarto on your Machine\nWe have already installed the extension that allows us to use a bunch of really cool features in VSCode with Quarto, but we need to have the backend installed on our machines as well. To install the program, you will click on the Get Started link on the homepage, download the program that’s suited to your operating system, and install it. The Guide link here also takes you to really easy tutorials on how to set up a variety of other uses of Quarto that we simply don’t have time for in this course.\n\n\n\n\n\n\nImportant\n\n\n\nAll instructions for creating, editing, previewing, and rendering projects will be shown in VSCode and it will not be specified over and over\n\n\n\n\nCreating a Project\nUnder the previously shown View option, navigate to the Command Palette. A dropdown menu at the top will start with a &gt;. Type quarto and a list of functions will be shown. The order will be different based on what you’ve used and what you’ve used most recently.\n\n\n\nQuarto functions\n\n\nWe will Create a project and create a Website for the purpose of this course.\n\n\n\nCreating a Project\n\n\n\nStructure of a Project\nAll Quarto projects have a YAML file with information about the project called _quarto.yml as well as an index.qmd file. The landing page of your website is the index.qmd file, while the _quarto.yml file contains all of the visual aspects of your website. We’ll spend a bit of time looking at the design of our course website so that you can see how it looks behind the scenes. Hopefully, with a website you know as well as you do by now, this will make things a lot more tangible!\n\n\n\n\n\n\nNote\n\n\n\n\n\nFun fact: YAML stands for “yet another markup language”\n\n\n\n\n\n\nAdding Files and Figures\nOften, we don’t just need a landing page like the index.qmd file, but we want different pages, as we have here. You can add blank documents with the .qmd extenstion. It is important for each file to have a title section so that it can be displayed properly and linked with your other pages. Update the _quarto.yml file to include this page in your table of contents or navigation bar (depending on what you opted to use), or simply link to the file with a hyperlink as we have done on our landing page\n\n\n\n\n\n\nTip\n\n\n\nRemeber to give your files a good name with no spaces in them. Also remember to add the .qmd extension\n\n\nTo add external figures to your document as we have done here with screenshots, you can simply link to the figure by its relative path, as described here.\n\n\n\n\n\n\nTip\n\n\n\nIt is good practice to have your images in a folder inside of your Quarto project in case Future You forgets that a figure is linked to a document and you move the folder containing all of your photos, for example. It also makes it much easier to put everything into a repository on GitHub to launch your site\n\n\n\n\nAdding Analyses\nQuarto is really good at implementing other programming languages within it. You can use R within it seamlessly. There is support for a large number of other programming languages within Quarto, but this course is only going to showcase the use of R.\n\n\n\n\n\n\nImportant\n\n\n\nYou will have to install the R and R syntax extensions for this to work in VSCode\n\n\n\npacman::p_load(tidyverse, palmerpenguins)\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point(mapping = aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nIf you have analyses that you have to repeat across several projects, these documents can be shared to create uniformity among your produced results, and your students do not need to reinvent the wheel. With several pages being supported in a single Quarto project, you also reduce the potential messiness that is introduced whenever you onboard a new student.\n\n\nViewing the Project\n\nPreviewing\nAs you go along, you might be interested in seeing what your pages look like. In the terminal, type\nquarto preview\nor simply click the preview button in VSCode and a side by side preview will open where you can click through your indexed pages.\n\n\n\nVSCode Preview function\n\n\n\n\nDifferent Views\nFrom the Command Palette, you can select whether you would like to view your document in source mode or in visual mode. The difference is mostly that you can interact with the document in the way it will be rendered in visual mode. For some people, visual mode is a lot more intuative, and there is no right or wrong way to interact with your documents.\n\n\n\nPublishing and Sharing the Project\nWith Quarto, you can render to HTML, Word, and PDF formats. To render individual files into PDF, add the information from this Quarto guide into the header of your document.\n---\ntitle: \"My document\"\nformat:\n  pdf:\n    toc: true\n    number-sections: true\n    colorlinks: true\n---\nYou will have to install a recent distribution of TeX for this via your terminal\nquarto install tinytex\nFor this course, we are simply going to render our documents into HTML format. In the next section, we will cover how to host Quarto pages on GitHub.",
+    "objectID": "course_pixi.html#running-a-package",
+    "href": "course_pixi.html#running-a-package",
+    "title": "Introduction to Pixi",
+    "section": "Running a Package",
+    "text": "Running a Package\nNow that we have an environment with a tool installed, we actually want to use it. For this we use the pixi run function.\nLet’s query the help function within Quarto:\npixi run quarto --help\n\n\n\n\n\n\nNote\n\n\n\nTo use other tools, simply substitute quarto with the package you’ve added, and the tool specific commands.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Introduction to Markdown and Quarto"
+      "Environment managers: Pixi"
     ]
   },
   {
@@ -120,109 +120,67 @@
     ]
   },
   {
-    "objectID": "course_containers.html",
-    "href": "course_containers.html",
-    "title": "Containers",
-    "section": "",
-    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Containers"
-    ]
-  },
-  {
-    "objectID": "course_containers.html#reproducibility-in-bioinformatics",
-    "href": "course_containers.html#reproducibility-in-bioinformatics",
-    "title": "Containers",
-    "section": "",
-    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Containers"
-    ]
-  },
-  {
-    "objectID": "course_containers.html#containers",
-    "href": "course_containers.html#containers",
-    "title": "Containers",
-    "section": "Containers",
-    "text": "Containers\n\nWhat are containers?\nContainers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.\n\n\nRunning Containers\nThere are several programs that can be used to build and run containers. Docker, Appptainer, and Podman are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.\n\n\nDownloading Container Images\nThere are several repositories for people to publish container images that they have specified. Dockerhub and Seqera are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.\n\ndockerhub Tutorial\nOn the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.\n\n\n\ndockerhub landing page\n\n\nFor these tutorials, we’ll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.\n\n\n\nRegistry search\n\n\nYou can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The biocontainers and pegi3s profiles have builds for a lot of tools, and they are built really well!\nIf we click on the vcftools from biocontainers we get to a typical dockerhub image landing page:\n\n\n\nVCFtools page\n\n\nThere is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.\napptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1\nThis command has several parts to it:\n\napptainer calls on the Apptainer software to run\npull tells Apptainer which function to use. In this case, we want it to go fetch something from a repository\nvcftools_0.1.16-1.sif is the name of the container image on our local machine. We could call it I_Love_Dogs but that is not very informative at all. Your collaborator won’t know what it means, and you certainly won’t know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.\ndocker:// is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)\nbiocontainers/vcftools is the profile/repository and container you are pulling\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nFile format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices\n\n\n\nIf you are interested in a different version than the current version, there are other versions under the tags tab:\n\n\n\nContainer versions\n\n\nIf you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example\napptainer pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2\n\n\nSeqera Tutorial\nThe Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use bioconda, conda-forge, and pypi libraries to build their containers images with Wave. The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn’t a problem, but sometimes you want to use something that isn’t hosted there.\n\n\n\nSeqera containers landing page\n\n\nWhen you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer.\n\n\n\nSelecting Singularity\n\n\nSince Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the fetching container comment. Don’t try to pull it when it is still building!\n\n\n\nWaiting to build\n\n\nWhen the container image is ready, you can copy the text and pull the image to your system:\n\n\n\nReady to download\n\n\napptainer pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9\nHere we use oras:// instead of docker:// as we are pulling from the oras registry. We are also pulling a different version from Seqera, so the name of the container is different.\n\n\n\nRunning Containers\nOnce you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.\nThere are 2 different ways to use a container: run and exec. The apptainer run command launches the container and first runs the %runscript for the container if one is defined, and then runs your command (we will cover %runscript in the Building Containers section). The apptainer exec command will not run the %runscript even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the run or exec commands, you can use your software as you usually would\napptainer exec vcftools_0.1.17.sif vcftools --version\nThis command runs your vcftools_0.1.17.sif container from the image, calls on the program vcftools that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used\nvcftools --version\n\n\n\n\n\n\nImportant\n\n\n\nPlease remember that VCFtools is just an example. If you want to run any other tool everything after apptainer run or apptainer exec has to be substituted by the name of the specific container image and the run commands for that particular tool!\n\n\n\n\nBuilding Containers\nIf the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a definition file with the extension .def\nHere we are going to build a container with a cow telling us the date. Save this in a file called lolcow.def.\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    date | cowsay | lolcat    \nThere are several components to this definition file.\n\nYou can set the operating system you want in the container, in this case Ubuntu 20.04.\n%post section is where you update the OS from its base state, install dependencies and so on.\n%environment is where you export paths and modify the environment.\n%runscript is the script that will run when you use apptainer run container.sif. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the %runscript section, and use apptainer run container.sif date | cowsay | lolcat to get the same output.\n\napptainer build lolcow.sif lolcow.def\nYou’ll get a lot of output on the status of the build, ending in\nINFO:    Adding environment to container\nINFO:    Adding runscript\nINFO:    Creating SIF file...\nINFO:    Build complete: lolcow.sif\nWe can now run our new container with\napptainer run lolcow.sif\n\n\n\nBoring cow\n\n\n\n\n\n\n\n\nNote\n\n\n\nTry removing the %runscript, build it again, and see what happens.\n\n\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    fortune | cowsay | lolcat    \nIf we use the same definition file as before, but substitute date for fortune in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:\n\n\n\nFun cow\n\n\n\n\n\nInspirational cow\n\n\nTo show the difference between the run and exec commands, we can use the same container with fortune in the runscript and run:\napptainer run lolcow.sif bash -c \"date|cowsay\"\nand\napptainer exec lolcow.sif bash -c \"date|cowsay\"\nThe run command gives us a philosophical cow while exec gives us our boring cow again.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Containers"
-    ]
-  },
-  {
-    "objectID": "course_pixi.html",
-    "href": "course_pixi.html",
-    "title": "Introduction to Pixi",
-    "section": "",
-    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Environment managers: Pixi"
-    ]
-  },
-  {
-    "objectID": "course_pixi.html#introduction",
-    "href": "course_pixi.html#introduction",
-    "title": "Introduction to Pixi",
-    "section": "",
-    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Environment managers: Pixi"
-    ]
-  },
-  {
-    "objectID": "course_pixi.html#setting-up-an-environment",
-    "href": "course_pixi.html#setting-up-an-environment",
-    "title": "Introduction to Pixi",
-    "section": "Setting Up An Environment",
-    "text": "Setting Up An Environment\nYou should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.\nHere, we will create a project called name_sida_training (please use your own name to avoid creating multiple environments with the same name). We are adding the conda-forge and bioconda channels with the -c flag.\npixi init name_sida_training -c conda-forge -c bioconda\nPixi will create a folder named name_sida_training with a a file pixi.toml. Let’s have a look at that file!\n\n\n\n\n\n\nTip\n\n\n\n\n\nHere is the code for changing directories, listing files, and viewing the contents of a file:\ncd name_sida_training\nls\nless pixi.toml\nTo exit the less view, press q for quit.\n\n\n\n\npixi.toml\nThe .toml file give your information about your project. Let’s have a look at one I made one my Mac before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"sida_quarto\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\n \n\n\n\n\n\n\nNote\n\n\n\nYour current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the -p linux-64 flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.\nIf you are adding a platform that doesn’t natively run on your OS (e.g. adding Linux when running on Windows) be sure to add the OS you are running your system on as well!\n\n\nOnce you have used the environment, or added a dependency/tool to it, you will find yet another file, called pixi.lock.\n\n\npixi.lock\nThe .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.\n\n\n\n\n\n\nImportant\n\n\n\nDo not delete the .toml or .lock files, or you will break your environment!",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Environment managers: Pixi"
-    ]
-  },
-  {
-    "objectID": "course_pixi.html#adding-dependencies",
-    "href": "course_pixi.html#adding-dependencies",
-    "title": "Introduction to Pixi",
-    "section": "Adding Dependencies",
-    "text": "Adding Dependencies\nAdding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.\nTo do this, we use the pixi add function. Let’s try adding Quarto to our environments (we will use Quarto extensively in this course!)\n\n\n\n\n\n\nImportant\n\n\n\nYou must be in the folder of the project to add software!\n\n\npixi add quarto\n\n\n\n\n\n\nTip\n\n\n\n\n\nIf you are unsure of how a function works, you can always query it, usually with the --help or -h flags. Here’s how it would look for the pixi add function\npixi add --help\nA general rule of thumb is that a single hyphen - is followed by a single letter flag, while double hyphens -- are usually followed by multi-letter flags\n\n\n\nHere is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include Quarto.\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"sida_quarto\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\nquarto = \"&gt;=1.7.32,&lt;2\"",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Environment managers: Pixi"
-    ]
-  },
-  {
-    "objectID": "course_pixi.html#running-a-package",
-    "href": "course_pixi.html#running-a-package",
-    "title": "Introduction to Pixi",
-    "section": "Running a Package",
-    "text": "Running a Package\nNow that we have an environment with a tool installed, we actually want to use it. For this we use the pixi run function.\nLet’s query the help function within Quarto:\npixi run quarto --help\n\n\n\n\n\n\nNote\n\n\n\nTo use other tools, simply substitute quarto with the package you’ve added, and the tool specific commands.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Environment managers: Pixi"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Fungal Population Genomics",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "text": "This course consists of several different parts. The first part, is the pre-course material in the form of lectures and discussions. The second part is a practical in-person session.",
     "crumbs": [
       "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#practical-part-1",
+    "href": "index.html#practical-part-1",
+    "title": "Fungal Population Genomics",
+    "section": "Practical Part 1",
+    "text": "Practical Part 1\nDuring the first part of the practical, we will set up a typical environment with Pixi, set up a Nextflow parameter and configuration, and run the pipeline. We believe it is important to have experience in setting these pipelines up.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#practical-part-2",
+    "href": "index.html#practical-part-2",
+    "title": "Fungal Population Genomics",
+    "section": "Practical Part 2",
+    "text": "Practical Part 2\nFor this course, we will be using the data from this paper: “Population genomics of a forest fungus reveals high gene flow and climate adaptation signatures” by Sønstebø, J. H. et. al. (2022). I have selected this paper because the data complies incredibly well with FAIR Principles. The genomic data we will use is hosted here.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#discussion-material",
+    "href": "index.html#discussion-material",
+    "title": "Fungal Population Genomics",
+    "section": "Discussion Material",
+    "text": "Discussion Material\nIn addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "course_nf-core.html",
+    "href": "course_nf-core.html",
+    "title": "nfcore introduction",
+    "section": "",
+    "text": "This page has been provided by Amrei Binzer-Panchal.\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "nfcore introduction"
+    ]
+  },
+  {
+    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "title": "nfcore introduction",
+    "section": "Finding and evaluating a pipeline",
+    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "nfcore introduction"
     ]
   },
   {
@@ -341,27 +299,99 @@
     "text": "About this site"
   },
   {
-    "objectID": "course_nf-core.html",
-    "href": "course_nf-core.html",
-    "title": "nfcore introduction",
+    "objectID": "course_containers.html",
+    "href": "course_containers.html",
+    "title": "Containers",
     "section": "",
-    "text": "This page has been provided by Amrei Binzer-Panchal.\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
+    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "nfcore introduction"
+      "Containers"
     ]
   },
   {
-    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "title": "nfcore introduction",
-    "section": "Finding and evaluating a pipeline",
-    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
+    "objectID": "course_containers.html#reproducibility-in-bioinformatics",
+    "href": "course_containers.html#reproducibility-in-bioinformatics",
+    "title": "Containers",
+    "section": "",
+    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "nfcore introduction"
+      "Containers"
+    ]
+  },
+  {
+    "objectID": "course_containers.html#containers",
+    "href": "course_containers.html#containers",
+    "title": "Containers",
+    "section": "Containers",
+    "text": "Containers\n\nWhat are containers?\nContainers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.\n\n\nRunning Containers\nThere are several programs that can be used to build and run containers. Docker, Appptainer, and Podman are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.\n\n\nDownloading Container Images\nThere are several repositories for people to publish container images that they have specified. Dockerhub and Seqera are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.\n\ndockerhub Tutorial\nOn the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.\n\n\n\ndockerhub landing page\n\n\nFor these tutorials, we’ll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.\n\n\n\nRegistry search\n\n\nYou can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The biocontainers and pegi3s profiles have builds for a lot of tools, and they are built really well!\nIf we click on the vcftools from biocontainers we get to a typical dockerhub image landing page:\n\n\n\nVCFtools page\n\n\nThere is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.\napptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1\nThis command has several parts to it:\n\napptainer calls on the Apptainer software to run\npull tells Apptainer which function to use. In this case, we want it to go fetch something from a repository\nvcftools_0.1.16-1.sif is the name of the container image on our local machine. We could call it I_Love_Dogs but that is not very informative at all. Your collaborator won’t know what it means, and you certainly won’t know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.\ndocker:// is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)\nbiocontainers/vcftools is the profile/repository and container you are pulling\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nFile format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices\n\n\n\nIf you are interested in a different version than the current version, there are other versions under the tags tab:\n\n\n\nContainer versions\n\n\nIf you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example\napptainer pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2\n\n\nSeqera Tutorial\nThe Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use bioconda, conda-forge, and pypi libraries to build their containers images with Wave. The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn’t a problem, but sometimes you want to use something that isn’t hosted there.\n\n\n\nSeqera containers landing page\n\n\nWhen you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer.\n\n\n\nSelecting Singularity\n\n\nSince Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the fetching container comment. Don’t try to pull it when it is still building!\n\n\n\nWaiting to build\n\n\nWhen the container image is ready, you can copy the text and pull the image to your system:\n\n\n\nReady to download\n\n\napptainer pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9\nHere we use oras:// instead of docker:// as we are pulling from the oras registry. We are also pulling a different version from Seqera, so the name of the container is different.\n\n\n\nRunning Containers\nOnce you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.\nThere are 2 different ways to use a container: run and exec. The apptainer run command launches the container and first runs the %runscript for the container if one is defined, and then runs your command (we will cover %runscript in the Building Containers section). The apptainer exec command will not run the %runscript even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the run or exec commands, you can use your software as you usually would\napptainer exec vcftools_0.1.17.sif vcftools --version\nThis command runs your vcftools_0.1.17.sif container from the image, calls on the program vcftools that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used\nvcftools --version\n\n\n\n\n\n\nImportant\n\n\n\nPlease remember that VCFtools is just an example. If you want to run any other tool everything after apptainer run or apptainer exec has to be substituted by the name of the specific container image and the run commands for that particular tool!\n\n\n\n\nBuilding Containers\nIf the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a definition file with the extension .def\nHere we are going to build a container with a cow telling us the date. Save this in a file called lolcow.def.\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    date | cowsay | lolcat    \nThere are several components to this definition file.\n\nYou can set the operating system you want in the container, in this case Ubuntu 20.04.\n%post section is where you update the OS from its base state, install dependencies and so on.\n%environment is where you export paths and modify the environment.\n%runscript is the script that will run when you use apptainer run container.sif. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the %runscript section, and use apptainer run container.sif date | cowsay | lolcat to get the same output.\n\napptainer build lolcow.sif lolcow.def\nYou’ll get a lot of output on the status of the build, ending in\nINFO:    Adding environment to container\nINFO:    Adding runscript\nINFO:    Creating SIF file...\nINFO:    Build complete: lolcow.sif\nWe can now run our new container with\napptainer run lolcow.sif\n\n\n\nBoring cow\n\n\n\n\n\n\n\n\nNote\n\n\n\nTry removing the %runscript, build it again, and see what happens.\n\n\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    fortune | cowsay | lolcat    \nIf we use the same definition file as before, but substitute date for fortune in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:\n\n\n\nFun cow\n\n\n\n\n\nInspirational cow\n\n\nTo show the difference between the run and exec commands, we can use the same container with fortune in the runscript and run:\napptainer run lolcow.sif bash -c \"date|cowsay\"\nand\napptainer exec lolcow.sif bash -c \"date|cowsay\"\nThe run command gives us a philosophical cow while exec gives us our boring cow again.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Containers"
+    ]
+  },
+  {
+    "objectID": "course_quarto.html",
+    "href": "course_quarto.html",
+    "title": "Introduction to Markdown and Quarto",
+    "section": "",
+    "text": "Markdown is a lightweight markup language for text editing. All of the documents you have seen in this course have been formatted with markdown. The platform this course website has been built on is called Quarto and implements markdown. In this section, we’ll look at some of the post commonly used markdown syntax, using Quarto to create lab notebooks, presentations, automate analyses, and host websites like this one.\nRecently, a lot of open-source books like R for Data Science and Python for Data Science have been created with Markdown using Quarto. The code for these books have also been publicly released.\n\n\n\n\n\n\nImportant\n\n\n\nPlease bookmark these books for your students! They are excellent resources!",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Introduction to Markdown and Quarto"
+    ]
+  },
+  {
+    "objectID": "course_quarto.html#introduction",
+    "href": "course_quarto.html#introduction",
+    "title": "Introduction to Markdown and Quarto",
+    "section": "",
+    "text": "Markdown is a lightweight markup language for text editing. All of the documents you have seen in this course have been formatted with markdown. The platform this course website has been built on is called Quarto and implements markdown. In this section, we’ll look at some of the post commonly used markdown syntax, using Quarto to create lab notebooks, presentations, automate analyses, and host websites like this one.\nRecently, a lot of open-source books like R for Data Science and Python for Data Science have been created with Markdown using Quarto. The code for these books have also been publicly released.\n\n\n\n\n\n\nImportant\n\n\n\nPlease bookmark these books for your students! They are excellent resources!",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Introduction to Markdown and Quarto"
+    ]
+  },
+  {
+    "objectID": "course_quarto.html#markdown-syntax",
+    "href": "course_quarto.html#markdown-syntax",
+    "title": "Introduction to Markdown and Quarto",
+    "section": "Markdown Syntax",
+    "text": "Markdown Syntax\nThere are plenty of really great cheatsheets like this one from Markdown Guide as well as this one. We’ll go through some of these details with you live rather than copying and pasting really good tutorials here.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Introduction to Markdown and Quarto"
+    ]
+  },
+  {
+    "objectID": "course_quarto.html#using-markdown",
+    "href": "course_quarto.html#using-markdown",
+    "title": "Introduction to Markdown and Quarto",
+    "section": "Using Markdown",
+    "text": "Using Markdown\nThere are many different platforms that use Markdown syntax in text editing. At SLUBI, we have a strong preference towards Visual Studio Code or its open-source alternative, VSCodium. To use all of the features, you need to install the Markdown extension.\nTo access to Extensions, either navigate with shortcuts (these are operating system depdenent and can be set by users, so we won’t go into that, but feel free to explore), from the View dropdown menu, or from the Extensions tab on the left.\n\n\n\nExtensions from View\n\n\n\n\n\nExtensions from the shortcut\n\n\nIn the search bar, you can search for general Markdown viewers and install them. For this course, we will use Quarto. Install that extension. Please also note the verified tick.\n\n\n\nQuarto extension to install\n\n\nThe Markdown All in One extension is also an interesting case to look at. It has a lot of downloads despite not being verified by an organisation. In general, be wary when installing extensions. Opt for ones that are installed often, as this one is. If possible, try to use verified extensions. In the age of information security we live in, it is becoming more important to use trusted content than whatever you find on the internet.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Introduction to Markdown and Quarto"
+    ]
+  },
+  {
+    "objectID": "course_quarto.html#quarto",
+    "href": "course_quarto.html#quarto",
+    "title": "Introduction to Markdown and Quarto",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto is an open-source technical and scientific reporting and publishing system.\n\n\n\nQuarto landing page\n\n\n\nInstalling Quarto on your Machine\nWe have already installed the extension that allows us to use a bunch of really cool features in VSCode with Quarto, but we need to have the backend installed on our machines as well. To install the program, you will click on the Get Started link on the homepage, download the program that’s suited to your operating system, and install it. The Guide link here also takes you to really easy tutorials on how to set up a variety of other uses of Quarto that we simply don’t have time for in this course.\n\n\n\n\n\n\nImportant\n\n\n\nAll instructions for creating, editing, previewing, and rendering projects will be shown in VSCode and it will not be specified over and over\n\n\n\n\nCreating a Project\nUnder the previously shown View option, navigate to the Command Palette. A dropdown menu at the top will start with a &gt;. Type quarto and a list of functions will be shown. The order will be different based on what you’ve used and what you’ve used most recently.\n\n\n\nQuarto functions\n\n\nWe will Create a project and create a Website for the purpose of this course.\n\n\n\nCreating a Project\n\n\n\nStructure of a Project\nAll Quarto projects have a YAML file with information about the project called _quarto.yml as well as an index.qmd file. The landing page of your website is the index.qmd file, while the _quarto.yml file contains all of the visual aspects of your website. We’ll spend a bit of time looking at the design of our course website so that you can see how it looks behind the scenes. Hopefully, with a website you know as well as you do by now, this will make things a lot more tangible!\n\n\n\n\n\n\nNote\n\n\n\n\n\nFun fact: YAML stands for “yet another markup language”\n\n\n\n\n\n\nAdding Files and Figures\nOften, we don’t just need a landing page like the index.qmd file, but we want different pages, as we have here. You can add blank documents with the .qmd extenstion. It is important for each file to have a title section so that it can be displayed properly and linked with your other pages. Update the _quarto.yml file to include this page in your table of contents or navigation bar (depending on what you opted to use), or simply link to the file with a hyperlink as we have done on our landing page\n\n\n\n\n\n\nTip\n\n\n\nRemeber to give your files a good name with no spaces in them. Also remember to add the .qmd extension\n\n\nTo add external figures to your document as we have done here with screenshots, you can simply link to the figure by its relative path, as described here.\n\n\n\n\n\n\nTip\n\n\n\nIt is good practice to have your images in a folder inside of your Quarto project in case Future You forgets that a figure is linked to a document and you move the folder containing all of your photos, for example. It also makes it much easier to put everything into a repository on GitHub to launch your site\n\n\n\n\nAdding Analyses\nQuarto is really good at implementing other programming languages within it. You can use R within it seamlessly. There is support for a large number of other programming languages within Quarto, but this course is only going to showcase the use of R.\n\n\n\n\n\n\nImportant\n\n\n\nYou will have to install the R and R syntax extensions for this to work in VSCode\n\n\n\npacman::p_load(tidyverse, palmerpenguins)\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point(mapping = aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nIf you have analyses that you have to repeat across several projects, these documents can be shared to create uniformity among your produced results, and your students do not need to reinvent the wheel. With several pages being supported in a single Quarto project, you also reduce the potential messiness that is introduced whenever you onboard a new student.\n\n\nViewing the Project\n\nPreviewing\nAs you go along, you might be interested in seeing what your pages look like. In the terminal, type\nquarto preview\nor simply click the preview button in VSCode and a side by side preview will open where you can click through your indexed pages.\n\n\n\nVSCode Preview function\n\n\n\n\nDifferent Views\nFrom the Command Palette, you can select whether you would like to view your document in source mode or in visual mode. The difference is mostly that you can interact with the document in the way it will be rendered in visual mode. For some people, visual mode is a lot more intuative, and there is no right or wrong way to interact with your documents.\n\n\n\nPublishing and Sharing the Project\nWith Quarto, you can render to HTML, Word, and PDF formats. To render individual files into PDF, add the information from this Quarto guide into the header of your document.\n---\ntitle: \"My document\"\nformat:\n  pdf:\n    toc: true\n    number-sections: true\n    colorlinks: true\n---\nYou will have to install a recent distribution of TeX for this via your terminal\nquarto install tinytex\nFor this course, we are simply going to render our documents into HTML format. In the next section, we will cover how to host Quarto pages on GitHub.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Introduction to Markdown and Quarto"
     ]
   }
 ]

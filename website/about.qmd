@@ -2,4 +2,6 @@
 title: "About"
 ---
 
-About this site
+This course was designed by Anna Berlin, Mikael Durling, and Lizel Potgieter
+
+The practical sessions in 2026 will be presented by Mimmi Eriksson

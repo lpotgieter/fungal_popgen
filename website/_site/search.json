@@ -363,5 +363,53 @@
       "Background knowledge",
       "Caution: AI in Bioinformatics"
     ]
+  },
+  {
+    "objectID": "course_pop_structure.html",
+    "href": "course_pop_structure.html",
+    "title": "Population Structure",
+    "section": "",
+    "text": "Note\n\n\n\nDifferentiate which commands are bash commands, which commands call dependencies within your Pixi environment, and which ones call on containers",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Structure"
+    ]
+  },
+  {
+    "objectID": "course_pop_structure.html#pca",
+    "href": "course_pop_structure.html#pca",
+    "title": "Population Structure",
+    "section": "PCA",
+    "text": "PCA\nReplace underscores with nothing\nsed \"s/_//g\" $VCF &gt; $VCF_renamed.vcf\nRun PCA generation through plink\nplink --vcf $VCF_renamed.vcf --allow-extra-chr --pca\n\n\n\n\n\n\nTip\n\n\n\nplink v1.9 is a lot better and more reliable than plink v2. Always check which version of your software is best suited to your needs!\n\n\n#PCA\npca_eigenval = read.table(\"teaching/forest_popgen/plink.eigenval\", header = F, sep = \" \")\npca_eigenvec = read.delim(\"teaching/forest_popgen/plink.eigenvec\", header = F, sep = \" \")\n\nnames(pca_eigenvec)[names(pca_eigenvec) == 'V1'] &lt;- 'ID'\npca_eigenvec = pca_eigenvec %&gt;%\n  mutate(Population = case_when(\n    startsWith(ID, \"BIL\") ~ \"bil\",\n    startsWith(ID, \"BNP\") ~ \"bnp\",\n    startsWith(ID, \"Her\") ~ \"her\",\n    startsWith(ID, \"Iss\") ~ \"iss\",\n    startsWith(ID, \"Kai\") ~ \"kai\",\n    startsWith(ID, \"Koi\") ~ \"koi\",\n    startsWith(ID, \"Kot\") ~ \"kot\",\n    startsWith(ID, \"Luu\") ~ \"luu\",\n    startsWith(ID, \"Met\") ~ \"met\",\n    startsWith(ID, \"Mor\") ~ \"mor\",\n    startsWith(ID, \"Mus\") ~ \"mus\",\n    startsWith(ID, \"Myl\") ~ \"myl\",\n    startsWith(ID, \"Pam\") ~ \"pam\",\n    startsWith(ID, \"Pat\") ~ \"pat\",\n    startsWith(ID, \"Pet\") ~ \"pet\",\n    startsWith(ID, \"Puk\") ~ \"puk\",\n    startsWith(ID, \"Rus\") ~ \"rus\",\n    startsWith(ID, \"Sig\") ~ \"sig\",\n    startsWith(ID, \"Skj\") ~ \"skj\",\n    startsWith(ID, \"eSK\") ~ \"skj\",\n    startsWith(ID, \"Spk\") ~ \"spk\",\n    startsWith(ID, \"Sus\") ~ \"sus\",\n    startsWith(ID, \"Ulv\") ~ \"ulv\",\n    startsWith(ID, \"Van\") ~ \"van\",\n    startsWith(ID, \"Ves\") ~ \"ves\"))\n\npca_eigenvec = pca_eigenvec %&gt;%\n  mutate(Location = case_when(\n    startsWith(ID, \"BIL\") ~ \"Sweden\",\n    startsWith(ID, \"BNP\") ~ \"Poland\",\n    startsWith(ID, \"Her\") ~ \"SWF\",\n    startsWith(ID, \"Iss\") ~ \"NEF\",\n    startsWith(ID, \"Kai\") ~ \"NEF\",\n    startsWith(ID, \"Koi\") ~ \"NEF\",\n    startsWith(ID, \"Kot\") ~ \"SWF\",\n    startsWith(ID, \"Luu\") ~ \"SWF\",\n    startsWith(ID, \"Met\") ~ \"SWF\",\n    startsWith(ID, \"Mor\") ~ \"Norway\",\n    startsWith(ID, \"Mus\") ~ \"SWF\",\n    startsWith(ID, \"Myl\") ~ \"SWF\",\n    startsWith(ID, \"Pam\") ~ \"NEF\",\n    startsWith(ID, \"Pat\") ~ \"NEF\",\n    startsWith(ID, \"Pet\") ~ \"SWF\",\n    startsWith(ID, \"Puk\") ~ \"SWF\",\n    startsWith(ID, \"Rus\") ~ \"Russia\",\n    startsWith(ID, \"Sig\") ~ \"Norway\",\n    startsWith(ID, \"Skj\") ~ \"Norway\",\n    startsWith(ID, \"eSK\") ~ \"Norway\",\n    startsWith(ID, \"Spk\") ~ \"Norway\",\n    startsWith(ID, \"Sus\") ~ \"SWF\",\n    startsWith(ID, \"Ulv\") ~ \"NEF\",\n    startsWith(ID, \"Van\") ~ \"NEF\",\n    startsWith(ID, \"Ves\") ~ \"SWF\"\n  ))\n\nrow_id &lt;- seq(1, nrow(pca_eigenval))\npca_eigenval$row_id = row_id\n\n#Plot eigenval \nggplot(pca_eigenval, aes(x = row_id, y = V1)) +\n  geom_bar(stat = \"identity\")\n\n#Plot eigenved\nggplot(pca_eigenvec, aes(x= V4, y= V3, col = Population)) +\n  geom_point()",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Structure"
+    ]
+  },
+  {
+    "objectID": "course_pop_structure.html#ld-we-are-not-going-to-do-this-in-the-course-today",
+    "href": "course_pop_structure.html#ld-we-are-not-going-to-do-this-in-the-course-today",
+    "title": "Population Structure",
+    "section": "LD (We are not going to do this in the course today)",
+    "text": "LD (We are not going to do this in the course today)\nUse scaffolds where _ are removed. This step is usually very memory intensive, so splitting the dataset into scaffolds is usually necessary. Under normal assumptions you would not expect unique chromosomes to be linked\nplink --vcf $VCF_renamed.vcf --allow-extra-chr --out plink-test --r2 --ld-window-r2 0 --ld-window 0 --ld-window-kb 8000 \n#from https://www.biostars.org/p/300381/\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(ggplot2)\n\ndfr &lt;-read.delim(\"in_file\",sep=\"\",hea\nder=F,check.names=F,stringsAsFactors=F)\ncolnames(dfr) &lt;- c(\"dist\",\"rsq\")\ndfr$distc &lt;- cut(dfr$dist,breaks=seq(from=min(dfr$dist)-1,to=max(dfr$dist)+1,by=10000))\ndfr1 &lt;- dfr %&gt;% group_by(distc) %&gt;% summarise(mean=mean(rsq),median=median(rsq))\ndfr1 &lt;- dfr1 %&gt;% mutate(start=as.integer(str_extract(str_replace_all(distc,\"[\\\\(\\\\)\\\\[\\\\]]\",\"\"),\"^[0-9-\ne+.]+\")),\n\nend=as.integer(str_extract(str_replace_all(distc,\"[\\\\(\\\\)\\\\[\\\\]]\",\"\"),\"[0-9-e+.]+$\")),\nmid=start+((end-start)/2))\n\n#Plot\nggplot(dfr1, aes(x=start,y=mean))+\n    geom_line()",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Structure"
+    ]
+  },
+  {
+    "objectID": "course_pop_structure.html#population-structure",
+    "href": "course_pop_structure.html#population-structure",
+    "title": "Population Structure",
+    "section": "Population Structure",
+    "text": "Population Structure\nThere are many ways to determine population structure. We will use sNMF.\nConvert the VCF to a .geno file with LEA in R. Here is some (example code)[https://rdrr.io/bioc/LEA/man/vcf2geno.html]\nlibrary(LEA)\nlibrary(tidyverse)\n# Creation of a file called \"example.vcf\"\n# with 4 SNPs for 3 individuals.\ndata(\"example_vcf\")\nwrite.table(example_vcf,\"example.vcf\",col.names =\n    c(\"#CHROM\", \"POS\", \"ID\", \"REF\", \"ALT\", \"QUAL\", \"FILTER\", \"INFO\",\n    \"FORMAT\", \"SAMPLE0\", \"SAMPLE1\", \"SAMPLE2\"),\n    row.names = FALSE, quote = FALSE)\n\n# Conversion    from the vcf format (\"example.vcf\") \n#               to the geno format (\"example.geno\").\n# By default,   the name of the output file is the same name\n#               as the input file with a .geno extension.\n# Create files: \"example.geno\",\n#               \"example.vcfsnp\" - SNP informations,\n#               \"example.removed\" - removed lines. \noutput = vcf2geno(\"example.vcf\")\n\n# Conversion    from the vcf format (\"example.vcf\")\n#               to the geno format with the output file called \"plop.geno\".\n# Create files: \"plop.geno\",\n#               \"plop.vcfsnp\" - SNP informations,\n#               \"plop.removed\" - removed lines. \noutput = vcf2geno(\"example.vcf\", \"plop.geno\")\n\n# As force = false and the file \"example.geno\" already exists,\n# nothing happens.\noutput = vcf2geno(\"example.vcf\", force = FALSE)\nThe converted file can be used by sNMF to create the admixture plots\nlibrary(LEA)\nlibrary(tidyverse)\n### Example of analysis using snmf ###\n# Creation of the genotype file: genotypes.geno.\n# The data contain 400 SNPs for 50 individuals.\n#data(\"tutorial\")\n#write.geno(tutorial.R, \"genotypes.geno\")\n################\n# running snmf #\n################\nproject.snmf = snmf(\"yourfiles.GT.FORMAT.geno\",\nK = 1:20,\nentropy = TRUE,\nploidy = 1,\nrepetitions = 10,\nproject = \"new\")\n# plot cross-entropy criterion of all runs of the project\nplot(project.snmf, cex = 1.2, col = \"lightblue\", pch = 19)\n# get the cross-entropy of the 10 runs for K = 4\nce = cross.entropy(project.snmf, K = 4)\n# select the run with the lowest cross-entropy for K = 4\nbest = which.min(ce)\n#add names\nmetadata = read.table(\"your .d file\", header =T)\nindv_snmf = read_tsv(\"your isolate name filet\", col_names = F)\nnames(indv_snmf) = \"Sample\"\ndatalist = list()\nfor (i in c(6, 7, 8, 9)){\nbest = which.min(cross.entropy(project.snmf, K = i))\ntemp = as.data.frame(Q(project.snmf, i, best))\ntemp= cbind(indv_snmf, temp)\ntemp = temp %&gt;%\ngather(\"Cluster\", \"Admix_coef\", -\"Sample\") %&gt;%\nmutate(K=i)\ndatalist[[i]] = as.tibble(temp)\n}\nsnmf_results_per_K = bind_rows(datalist)%&gt;%\ninner_join(., metadata, by = c(\"Sample\" = \"Isolate\")) %&gt;%\nunite(ID, Country, Location, Host, col = \"for_display\", remove = F)\nggplot(snmf_results_per_K, aes(x = reorder(Sample, ID), y = Admix_coef, fill = Cluster,\ntext = for_display)) +\ngeom_bar(position = \"stack\", stat = \"identity\", show.legend = F) +\nfacet_grid(K~.) +\ntheme_bw() +\ntheme(axis.title = element_blank(),\naxis.text.x = element_text(angle = 60, hjust = 1),\nlegend.title = element_blank())\n# display the Q-matrix\n#my.colors &lt;- c(\"tomato\", \"lightblue\",\n\"olivedrab\", \"gold\")\n#barchart(project.snmf, K = 4, run = best,\nborder = NA, space = 0, col = my.colors,\nxlab = \"Individuals\", ylab = \"Ancestry proportions\",\nmain = \"Ancestry matrix\") -&gt; bp\n#axis(1, at = 1:length(bp$order),\nlabels = bp$order, las = 3, cex.axis = .4)",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Structure"
+    ]
   }
 ]

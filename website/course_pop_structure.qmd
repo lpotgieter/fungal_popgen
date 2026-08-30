@@ -171,7 +171,7 @@ output = vcf2geno("example.vcf", "plop.geno")
 output = vcf2geno("example.vcf", force = FALSE)
 ```
 The converted file can be used by sNMF to create the admixture plots
-```{r}
+```{.r}
 library(LEA)
 library(tidyverse)
 ### Example of analysis using snmf ###

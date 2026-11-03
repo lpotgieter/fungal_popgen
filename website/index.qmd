@@ -11,4 +11,4 @@ During the first part of the practical, we will set up a typical environment wit
 For this course, we will be using the data from [this paper](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.16369): "Population genomics of a forest fungus reveals high gene flow and climate adaptation signatures" by Sønstebø, J. H. et. al. (2022). I have selected this paper because the data complies incredibly well with [FAIR Principles](https://www.go-fair.org/fair-principles/). The genomic data we will use is hosted [here](https://datadryad.org/dataset/doi:10.5061/dryad.7d7wm37wr). 
 
 ## Discussion Material
-In addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it. 
+In addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it. See the section on some [leading questions](course_exercises.qmd)

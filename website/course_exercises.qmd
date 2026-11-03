@@ -1,0 +1,54 @@
+---
+title: "Discussion Guiding Questions"
+---
+
+## AI Use
+
+1. When do you use AI?
+2. What kinds of AI do you use?
+3. Why do you choose to delegate certain tasks to AI?
+4. How do you retain agency over your work when there is pressure on you to adopt AI to a large extent?
+5. How do you implement the 4 D's framework?
+
+## Population Genomics/Bioinformatics
+1. What are some of the technologies that can be used to produce population genomics data?
+   1. Long read vs short read
+   2. Software constraints
+2. Is it always sensible to do whole genome sequencing?
+3. What are some things to consider with pooled samples?
+4. What are some things you need to consider when it comes to choosing the sequencing platform?
+5. When might you consider using a ready-made pipeline like the Sarek pipeline over something you have written yourself?
+6. What kind of criteria should you consider when filtering your variants you produce from your variant calling pipeline of choice?
+7. Why should you consider more than one _k_ when doing population structure analyses?
+8. How can you see population genomics being integrated with other fields of study? (comparative genomics, pangenomics, structural biology?)
+9. What is the future of population genetics/genomics? Where are we heading, and what kinds of data should we be planning to consider?
+10. How do we make use of the principles of homology and orthology in functional and structural prediction?
+
+
+
+
+does chr match genomewide 
+
+annotate proteins alphafold3 deeploc2
+
+extract specific gene seq tools
+
+circos :/ 
+
+
+Here are some tutorials where you can change assumptions to see how your populations are affected
+* [PopG Online](https://ug.sebc.me/labs/popg)
+* [learnPopGen](http://www.phytools.org/PopGen/)
+
+## End of Course Evaluation
+
+1. During the course, you have completed several exercises on a chromosome. As a final assignment, please compile your code and your results into a markdown document and render it. You are welcome to use Quarto or R Markdown.
+
+2. Explain what your code does and why you selected certain parameters. (E.g. why did you use a window size of 1000 instead of 100000).
+Select a region that is under selection on the chromosome you have worked with. 
+* Explain what you see in this region and what it tells you about what might be going on in the environment or within the population to result in this signature
+* Create a 3D structure of a protein of interest in this region. Why do you think this region may be experiencing the 
+
+3. Compare your results with the findings of the paper. Did subsetting the data make a difference? Why did we do this? What are the impacts?
+
+4. What are the next steps? What haven't we done?

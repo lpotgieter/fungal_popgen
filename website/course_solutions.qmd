@@ -4,7 +4,7 @@ title: "Spoiler: Solutions"
 
 Extract scaffold 1
 ```{.bash}
-vcftools --vcf /proj/mykopat-popgen-c/course_files/2_source_data/part2_vcf_manipulation/Phenig_final_0619.recode.vcf --chr scaffold_1 --recode --recode-INFO-all --out scaffold1
+vcftools --vcf Phenig_final_0619.recode.vcf --chr scaffold_1 --recode --recode-INFO-all --out scaffold1
 ```
 Remove indels
 ```{.bash}

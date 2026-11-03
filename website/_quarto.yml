@@ -33,7 +33,10 @@ website:
           - course_pop_structure.qmd
           - course_genome_annotation.qmd
           - course_solutions.qmd
-
+          - course_genome_annotation.qmd
+      - section: "Discussion"
+        contents:
+          - course_exercises.qmd
 format:
   html:
     theme:

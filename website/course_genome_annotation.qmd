@@ -4,6 +4,48 @@ title: "Genome Annotation"
 
 It is all good and well to find signatures of selection across the genome, but if a genome is not annotated, you cannot say much more beyond "region xyz has a negative Tajima's D", for instance. In this course, you got a GFF3 with an annotation, but if you work with your own system, you might not have this.
 
-## Gene Prediction
+## Genome Annotation
 
-The first step is to determine where genes start and end. 
+The first step is to determine where genes start and end. In this case, the reference genome has been annotated by the authors and can be found [here](https://mycocosm.jgi.doe.gov/Pheni1/Pheni1.home.html).
+
+If you had to perform your own annotations, you could perform an _ab initio_  or _de novo_ prediction using previously compiled gene prediction models from related species. There are many different tools available, and you should choose the best one for your organism. You can also create your own prediction model by sequencing the transcriptome of the organism whose genome you are sequencing. You would use a program like [Augustus](https://bioinf.uni-greifswald.de/augustus/) or [GeneMark / GeneMark-ES](https://exon.gatech.edu). You will typically assemble the transcriptome (see the [denovotranscript](https://nf-co.re/denovotranscript/1.2.1/) nf-core pipeline), and then use the assembly with the reference genome to train a prediction model to apply it to the assembly. You can use this hybrid appraoch through Augustus or through the [Maker pipeline](https://hpc.nih.gov/apps/maker.html).
+
+### GFF3 Format
+From this process, you obtain a GFF3 file. Here are is the first gene from that file
+````
+##gff-version 3
+##sequence-region scaffold_1 1 2651010
+scaffold_1	prediction	gene	10804	11464	0	-	.	ID=gene_4;Name=jgi.p|Pheni1|273;portal_id=Pheni1;product_name=Nop10 family nucleolar RNA-binding protein;proteinId=273;transcriptId=615
+scaffold_1	prediction	mRNA	10804	11464	.	-	.	ID=mRNA_4;Name=jgi.p|Pheni1|273;Parent=gene_4;proteinId=273;track=FilteredModels1;transcriptId=615
+scaffold_1	prediction	exon	11166	11464	.	-	.	ID=exon_4_1;Parent=mRNA_4
+scaffold_1	prediction	five_prime_UTR	11220	11464	.	-	.	ID=UTR5_4;Parent=mRNA_4
+scaffold_1	prediction	CDS	11166	11219	.	-	0	ID=CDS_4;Parent=mRNA_4
+scaffold_1	prediction	exon	11061	11103	.	-	.	ID=exon_4_2;Parent=mRNA_4
+scaffold_1	prediction	CDS	11061	11103	.	-	0	ID=CDS_4;Parent=mRNA_4
+scaffold_1	prediction	exon	10804	11001	.	-	.	ID=exon_4_3;Parent=mRNA_4
+scaffold_1	prediction	CDS	10904	11001	.	-	2	ID=CDS_4;Parent=mRNA_4
+scaffold_1	prediction	three_prime_UTR	10804	10903	.	-	.	ID=UTR3_4;Parent=mRNA_4
+````
+
+|Column|Content|Explanation|
+|-|-|-|
+|1|scaffold_1|The scaffold/contig name from the assembly the annotation is based on |
+|2|prediction|The kind of data contained. Sometimes you will have the tool you used indicated here. Usually only important for the user|
+|3|gene/exon/CDS/UTR|The feature contained within the following coordinates|
+|4|int|The start position of the feature described in column3|
+|5|int|The end position of the feature described in column3|
+|6|score|The quality of the gene prediction. A `.` is used when there is no quality predicted. It is unusual to have a score associated with predictions with modern software|
+|7|+/-|The strand the prediction is made on|
+|8|Phase|This refers to the reading frame phase, and only applies to CDS attributes|
+|9|Attributes|Annotation information of the particular gene. In this case, there is information relating to other annotations associated to the assembly. This is usually appeneded by the annotation pipeline|
+
+
+## Functional Annotation
+
+Once you know where the genes are, you need to know what genes do. A very comprehensive tool for this is [eggNOG-mapper](https://eggnog-mapper.cgmlab.org), and it uses orthology-based annotation rather than relying on best hits. See the prerecorded lectures on orthology. 
+
+To annotate localisation of predicted proteins, you can use [DeepLoc](https://services.healthtech.dtu.dk/services/DeepLoc-2.1/). You might also be interested in annotating whether proteins are predicted to be effectors or not. You can annotate signal peptide regions with [SignalP](https://services.healthtech.dtu.dk/services/SignalP-6.0/) if you are not running DeepLoc on your predicted proteins. Proteins that have a signal peptide can be extracted and then annotated with [EffectorP](https://effectorp.csiro.au). 
+
+## Extracting Regions of Interest
+
+The GFF format can be converted to BED format fairly easily by extracting columns 1, 4, and 5. By utilising this coordinate system, tools like `bedtools getfasta` from [bedtools](https://bedtools.readthedocs.io/en/latest/content/tools/getfasta.html). If you would like to extract sequences by gene name from a multi-sequence fasta, you can use `seqtk subseq` from [seqtk](https://github.com/lh3/seqtk) where you use a list of fasta identifiers, one per line.

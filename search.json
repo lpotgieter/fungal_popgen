@@ -1,70 +1,79 @@
 [
   {
-    "objectID": "course_linux.html",
-    "href": "course_linux.html",
-    "title": "A Brief Introduction to Linux",
+    "objectID": "course_containers.html",
+    "href": "course_containers.html",
+    "title": "Containers",
     "section": "",
-    "text": "Unix-like operating systems are built under the model of free and open-source development and distribution. They often come with a graphical user interface (GUI) and can be run from the command line (CLI) or terminal. The CLI is a text-based interface that works exactly the same way as you would use your mouse, but you use words. It can be intimidating at first, but once you have mastered the basics, it’s really not different than using your mouse!\nIt is important to know how to use the terminal as all servers, and most bioinformatics tools do not have a GUI and rely on the use of the terminal.\n\n\n\n\n\n\nWarning\n\n\n\nMacOS and Linux, and Windows have significant differences in their syntax. Where we do things locally, we will point out some of the differences, but for the most part, we will provide Windows users with a local Linux platform so that this course can run as smoothly as possible\n\n\nFor this course, we do not expect you to be masters of Linux, but we will need some knowledge of how to find files, and some other basic Linux commands.",
+    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "A Brief Introduction to Linux"
+      "Containers"
     ]
   },
   {
-    "objectID": "course_linux.html#introduction",
-    "href": "course_linux.html#introduction",
-    "title": "A Brief Introduction to Linux",
+    "objectID": "course_containers.html#reproducibility-in-bioinformatics",
+    "href": "course_containers.html#reproducibility-in-bioinformatics",
+    "title": "Containers",
     "section": "",
-    "text": "Unix-like operating systems are built under the model of free and open-source development and distribution. They often come with a graphical user interface (GUI) and can be run from the command line (CLI) or terminal. The CLI is a text-based interface that works exactly the same way as you would use your mouse, but you use words. It can be intimidating at first, but once you have mastered the basics, it’s really not different than using your mouse!\nIt is important to know how to use the terminal as all servers, and most bioinformatics tools do not have a GUI and rely on the use of the terminal.\n\n\n\n\n\n\nWarning\n\n\n\nMacOS and Linux, and Windows have significant differences in their syntax. Where we do things locally, we will point out some of the differences, but for the most part, we will provide Windows users with a local Linux platform so that this course can run as smoothly as possible\n\n\nFor this course, we do not expect you to be masters of Linux, but we will need some knowledge of how to find files, and some other basic Linux commands.",
+    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "A Brief Introduction to Linux"
+      "Containers"
     ]
   },
   {
-    "objectID": "course_linux.html#filesystem-architecture",
-    "href": "course_linux.html#filesystem-architecture",
-    "title": "A Brief Introduction to Linux",
-    "section": "Filesystem Architecture",
-    "text": "Filesystem Architecture\nLinux uses a hierarchical filesystem, similar to Windows and Mac. In this figure from TecAdmin, there is a representation of this.\n\n\n\nFilesystem\n\n\nWe can see here that the root or / folder is at the top of the hierarchy, with all other folders, like home/ and var/ inside of it.\n\n\n\n\n\n\nNote\n\n\n\n\n\nWe use / at the end of a folder name to show that it is a folder.\n\n\n\nThere are two different ways for us to know where our file is within the operating system. The first is the absolute path and the second is the relative path. The absolute path gives us information that is true anywhere on your operating system. Whether your terminal is open in /usr/bin/something/ or /var/tmp/, a file will always be located at /usr/Documents/sequence.fasta as it is the true or absolute location. The relative path, as the name suggests, is relative to where you currently are on the file tree. If your terminal is open in /usr/Documents/paper/figures/linux/, the file from before, sequence.fasta will be two folders up from where you are. If you were in /var/bin/something/ it would three folder up, one to the side, and two folders down.\n\n\n\n\n\n\nTip\n\n\n\n\n\nIt is often good practice to use absolute paths when you set pipelines up to run- this way, your programs know where to go looking for the files they’re supposed to work on",
+    "objectID": "course_containers.html#containers",
+    "href": "course_containers.html#containers",
+    "title": "Containers",
+    "section": "Containers",
+    "text": "Containers\n\nWhat are containers?\nContainers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.\n\n\nRunning Containers\nThere are several programs that can be used to build and run containers. Docker, Appptainer, and Podman are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.\n\n\nDownloading Container Images\nThere are several repositories for people to publish container images that they have specified. Dockerhub and Seqera are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.\n\ndockerhub Tutorial\nOn the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.\n\n\n\ndockerhub landing page\n\n\nFor these tutorials, we’ll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.\n\n\n\nRegistry search\n\n\nYou can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The biocontainers and pegi3s profiles have builds for a lot of tools, and they are built really well!\nIf we click on the vcftools from biocontainers we get to a typical dockerhub image landing page:\n\n\n\nVCFtools page\n\n\nThere is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.\napptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1\nThis command has several parts to it:\n\napptainer calls on the Apptainer software to run\npull tells Apptainer which function to use. In this case, we want it to go fetch something from a repository\nvcftools_0.1.16-1.sif is the name of the container image on our local machine. We could call it I_Love_Dogs but that is not very informative at all. Your collaborator won’t know what it means, and you certainly won’t know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.\ndocker:// is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)\nbiocontainers/vcftools is the profile/repository and container you are pulling\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nFile format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices\n\n\n\nIf you are interested in a different version than the current version, there are other versions under the tags tab:\n\n\n\nContainer versions\n\n\nIf you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example\napptainer pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2\n\n\nSeqera Tutorial\nThe Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use bioconda, conda-forge, and pypi libraries to build their containers images with Wave. The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn’t a problem, but sometimes you want to use something that isn’t hosted there.\n\n\n\nSeqera containers landing page\n\n\nWhen you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer.\n\n\n\nSelecting Singularity\n\n\nSince Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the fetching container comment. Don’t try to pull it when it is still building!\n\n\n\nWaiting to build\n\n\nWhen the container image is ready, you can copy the text and pull the image to your system:\n\n\n\nReady to download\n\n\napptainer pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9\nHere we use oras:// instead of docker:// as we are pulling from the oras registry. We are also pulling a different version from Seqera, so the name of the container is different.\n\n\n\nRunning Containers\nOnce you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.\nThere are 2 different ways to use a container: run and exec. The apptainer run command launches the container and first runs the %runscript for the container if one is defined, and then runs your command (we will cover %runscript in the Building Containers section). The apptainer exec command will not run the %runscript even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the run or exec commands, you can use your software as you usually would\napptainer exec vcftools_0.1.17.sif vcftools --version\nThis command runs your vcftools_0.1.17.sif container from the image, calls on the program vcftools that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used\nvcftools --version\n\n\n\n\n\n\nImportant\n\n\n\nPlease remember that VCFtools is just an example. If you want to run any other tool everything after apptainer run or apptainer exec has to be substituted by the name of the specific container image and the run commands for that particular tool!\n\n\n\n\nBuilding Containers\nIf the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a definition file with the extension .def\nHere we are going to build a container with a cow telling us the date. Save this in a file called lolcow.def.\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    date | cowsay | lolcat    \nThere are several components to this definition file.\n\nYou can set the operating system you want in the container, in this case Ubuntu 20.04.\n%post section is where you update the OS from its base state, install dependencies and so on.\n%environment is where you export paths and modify the environment.\n%runscript is the script that will run when you use apptainer run container.sif. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the %runscript section, and use apptainer run container.sif date | cowsay | lolcat to get the same output.\n\napptainer build lolcow.sif lolcow.def\nYou’ll get a lot of output on the status of the build, ending in\nINFO:    Adding environment to container\nINFO:    Adding runscript\nINFO:    Creating SIF file...\nINFO:    Build complete: lolcow.sif\nWe can now run our new container with\napptainer run lolcow.sif\n\n\n\nBoring cow\n\n\n\n\n\n\n\n\nNote\n\n\n\nTry removing the %runscript, build it again, and see what happens.\n\n\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    fortune | cowsay | lolcat    \nIf we use the same definition file as before, but substitute date for fortune in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:\n\n\n\nFun cow\n\n\n\n\n\nInspirational cow\n\n\nTo show the difference between the run and exec commands, we can use the same container with fortune in the runscript and run:\napptainer run lolcow.sif bash -c \"date|cowsay\"\nand\napptainer exec lolcow.sif bash -c \"date|cowsay\"\nThe run command gives us a philosophical cow while exec gives us our boring cow again.",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "A Brief Introduction to Linux"
+      "Containers"
     ]
   },
   {
-    "objectID": "course_linux.html#connecting-to-a-server",
-    "href": "course_linux.html#connecting-to-a-server",
-    "title": "A Brief Introduction to Linux",
-    "section": "Connecting to a Server",
-    "text": "Connecting to a Server\nThere are many different ways you can connect to a server with SSH. At SLUBI, we have a strong preference towards Visual Studio Code or its open-source alternative, VSCodium. It provides a graphical user interface where you can create, edit, and view files, and see the file system.\nTo be able to connect to a server, you need to install an extension called Remote-SSH from the extensions market place.\n\n\n\nExtensions from View\n\n\n\n\n\nExtensions from the shortcut\n\n\nNow we need to add a host to our list of known hosts. There are several ways of doing this, and all ways lead to establishing a connection.\n\nUnder the previously shown View option, navigate to the Command Palette. A dropdown menu at the top will start with a &gt;. Type Remote-SSH and select add new host. Here we will input our credentials. This will populate a file in a hidden folder, .ssh in your local home directories called known_hosts.\nYou can also write all of these lines manually. This way, you can also specify SSH keys that may be needed to log on to particular servers. We won’t be covering that in this course, though.\n\nAfter a host has been added, you can connect to it. You can do this either through the Command Palette, or through the small blue backwards and forwards arrows in the bottom left corner of VSCode. You will receive a list of known hosts that you can connect to. If you need to connect with a password, a password prompt will be shown.\nOnce connected, you can open the file manager on the left.\nFor privacy concerns, we will share the exact commands locally in the room.\n\n\n\n\n\n\nImportant\n\n\n\nRemeber to only open either your home directories or the folder for your projects with the file manager. If you try to open folders that are too large, you will cause VSCode to crash (and you may cause significant problems for your system administrator!)",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "A Brief Introduction to Linux"
-    ]
-  },
-  {
-    "objectID": "course_linux.html#navigating-with-the-terminal",
-    "href": "course_linux.html#navigating-with-the-terminal",
-    "title": "A Brief Introduction to Linux",
-    "section": "Navigating with the terminal",
-    "text": "Navigating with the terminal\nFor this part of the session, we will do some hands-on practice! For this, we will open a terminal. You can do this through the Command Palette by using the View: Toggle Terminal function, or clicking the box with a dark bottom half and an empty top half in the top right corner of VSCode.\n\n\n\n\n\n\nNote\n\n\n\n\n\nFor Windows Users If you are using a Windows operating system, you can install the free Home edition of MobaXterm when your access to this server is removed if you want to continue practicing your Linux skills.\nTo use MobaXterm as a Linux shell, click on New Session and select a bash shell. There will probably be a prompt that you have to installl an extension. Click on the link it will provide, or copy the extension it needs and search it on Google (or your preferred search engine) and install it. Then try starting a new session again.\n\n\n\nTo see where we currently are in the filesystem, we use the present working directory command. This will give us the absolute path of the directory that our terminal open in.\npwd\nTo see the files that are currently in the directory we use the list command.\nls\nTo make a directory, we use the make directory command, followed by the name we would like our directory to have. Here we will make a directory called sida_training.\nmkdir sida_training\n\n\n\n\n\n\nTip\n\n\n\n\n\nWhen we give files and folders names, we don’t use spaces or special characters. It makes it really difficult to access files. We can use different ways to name our files and folders 1. youcanbechaoticandusenothing 2. YouCanUseCapitalLetters 3. you_can_use_underscores 4. you-can-use-dashes The most important thing is to be consistent with what you use, and to use descriptive names that are not too long. Future you will thank past you!\n\n\n\nTo enter the sida_training directory, we will use the change directory command.\ncd sida_training\nWe can use the pwd command again just to make sure that we are indeed in the right folder.\nTo go back to the folder we were in previously, we can use a shortcut rather than the absolute path.\ncd ..\n\n\n\n\n\n\nTip\n\n\n\n\n\nThere are no limits to the amount of directories you can go back (provided they are in your filesystem). If you wanted to go up 3 directories, you’d use\ncd ../../..\n\n\n\nTo delete files and folder you use the remove command. If you want to remove a folder, you need a recursive flag.\nrm -r sida_training\nIf we had a file to look at, we could use the less command. In the interface, we press q to quit.\nless filename\nWith these Linux basics, you will certainly be able to follow our course. If you would like to learn more, Data Carpentry and Software Carpentry have excellent tutorials on using the terminal in more detail, and we can only recommend them!",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "A Brief Introduction to Linux"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fungal Population Genomics",
     "section": "",
-    "text": "This course was designed by Anna Berlin, Mikael Durling, and Lizel Potgieter\nThe practical sessions in 2026 will be presented by Mimmi Eriksson"
+    "text": "This course consists of several different parts. The first part, is the pre-course material in the form of lectures and discussions. The second part is a practical in-person session.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#practical-part-1",
+    "href": "index.html#practical-part-1",
+    "title": "Fungal Population Genomics",
+    "section": "Practical Part 1",
+    "text": "Practical Part 1\nDuring the first part of the practical, we will set up a typical environment with Pixi, set up a Nextflow parameter and configuration, and run the pipeline. We believe it is important to have experience in setting these pipelines up.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#practical-part-2",
+    "href": "index.html#practical-part-2",
+    "title": "Fungal Population Genomics",
+    "section": "Practical Part 2",
+    "text": "Practical Part 2\nFor this course, we will be using the data from this paper: “Population genomics of a forest fungus reveals high gene flow and climate adaptation signatures” by Sønstebø, J. H. et. al. (2022). I have selected this paper because the data complies incredibly well with FAIR Principles. The genomic data we will use is hosted here.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#discussion-material",
+    "href": "index.html#discussion-material",
+    "title": "Fungal Population Genomics",
+    "section": "Discussion Material",
+    "text": "Discussion Material\nIn addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it. See the section on some leading questions",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "course_quarto.html",
@@ -127,123 +136,207 @@
     ]
   },
   {
-    "objectID": "course_pop_stats.html",
-    "href": "course_pop_stats.html",
-    "title": "Population Statistics",
+    "objectID": "course_nextflow.html",
+    "href": "course_nextflow.html",
+    "title": "Nextflow",
     "section": "",
-    "text": "A variant call format (VCF) is a type of file that stores all the information regarding variant and non-variant sites of individuals mapped to a reference assembly. This assembly can be a single chromosome, or a collection of scaffolds- there really is no limit!",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#introduction",
-    "href": "course_pop_stats.html#introduction",
-    "title": "Population Statistics",
-    "section": "",
-    "text": "A variant call format (VCF) is a type of file that stores all the information regarding variant and non-variant sites of individuals mapped to a reference assembly. This assembly can be a single chromosome, or a collection of scaffolds- there really is no limit!",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#data-we-will-be-using",
-    "href": "course_pop_stats.html#data-we-will-be-using",
-    "title": "Population Statistics",
-    "section": "Data we will be using",
-    "text": "Data we will be using\nTo get familiar with the kind of tools and data one typically uses in bioinformatics analyses, I have selected a case from literature. 1. Paper: https://onlinelibrary.wiley.com/doi/full/10.1111/mec.16369 2. Data availability: https://datadryad.org/stash/dataset/doi:10.5061/dryad.7d7wm37wr 3. Reference genome: https://mycocosm.jgi.doe.gov/Pheni1/Pheni1.home.html\nTo get around storage and computational time restrictions, you will divide into groups of two and I will assign a scaffold to your group. You’ll try to redo some of the analyses and statistics that are presented in the supplementary material, discover if there are any regions under selection in your scaffold",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#tools-available",
-    "href": "course_pop_stats.html#tools-available",
-    "title": "Population Statistics",
-    "section": "Tools available",
-    "text": "Tools available\nThere are a multitude of tools available for the analysis of VCFs. It is almost entirely up to the researcher as to how they wish to interact with these files. Some bioinformaticians prefer to analyse files in the CLI and only plot the final data in R or python, while others prefer to do everything with R packages. For this part of the workshop, I will show you bits of both aspects.\nOne popular R package for VCF analyses is vcfR (https://cran.r-project.org/web/packages/vcfR/vignettes/intro_to_vcfR.html#:~:text=vcfR%20is%20a%20package%20intended,at%20the%20vcfR%20documentation%20website)\nTo plot data, we will be using ggplot2, and some functions of the dplyr package.",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#r-scripts",
-    "href": "course_pop_stats.html#r-scripts",
-    "title": "Population Statistics",
-    "section": "R scripts",
-    "text": "R scripts\nTo ensure that your plots are easy to understand, it is important to have some metadata stored in the data you wish to plot. This can be sampling location, identity to ancestral genetic population, sampling year, and so on.\nThe data we will be using has really neat identifiers as the individual names start with the population. This should act as an example for you to assign good names to your own data to ensure that as much as possible can be automated to reduce the chance of human error (as careful as you are, mistakes can happen very easily with large amounts of data and automation ensures that mistakes can easily be caught and corrected!) Have a look in the online data to see if you can see where this comes from.\n input_data %&gt;%\n  mutate(Population = case_when(\n    startsWith(ID, \"Bil\") ~ \"bil\",\n    startsWith(ID, \"Bnp\") ~ \"bnp\",\n    startsWith(ID, \"Her\") ~ \"her\",\n    startsWith(ID, \"Iss\") ~ \"iss\",\n    startsWith(ID, \"Kai\") ~ \"kai\",\n    startsWith(ID, \"Koi\") ~ \"koi\",\n    startsWith(ID, \"Kot\") ~ \"kot\",\n    startsWith(ID, \"Luu\") ~ \"luu\",\n    startsWith(ID, \"Met\") ~ \"met\",\n    startsWith(ID, \"Mor\") ~ \"mor\",\n    startsWith(ID, \"Mus\") ~ \"mus\",\n    startsWith(ID, \"Myl\") ~ \"myl\",\n    startsWith(ID, \"Pam\") ~ \"pam\",\n    startsWith(ID, \"Pat\") ~ \"pat\",\n    startsWith(ID, \"Pet\") ~ \"pet\",\n    startsWith(ID, \"Puk\") ~ \"puk\",\n    startsWith(ID, \"Rus\") ~ \"rus\",\n    startsWith(ID, \"Sig\") ~ \"sig\",\n    startsWith(ID, \"Skj\") ~ \"skj\",\n    startsWith(ID, \"eSK\") ~ \"skj\",\n    startsWith(ID, \"Spk\") ~ \"spk\",\n    startsWith(ID, \"Sus\") ~ \"sus\",\n    startsWith(ID, \"Ulv\") ~ \"ulv\",\n    startsWith(ID, \"Van\") ~ \"van\",\n    startsWith(ID, \"Ves\") ~ \"ves\"\n  ))\n\n input_data %&gt;%\n  mutate(Location = case_when(\n    startsWith(ID, \"Bil\") ~ \"Sweden\",\n    startsWith(ID, \"Bnp\") ~ \"Poland\",\n    startsWith(ID, \"Her\") ~ \"SWF\",\n    startsWith(ID, \"Iss\") ~ \"NEF\",\n    startsWith(ID, \"Kai\") ~ \"NEF\",\n    startsWith(ID, \"Koi\") ~ \"NEF\",\n    startsWith(ID, \"Kot\") ~ \"SWF\",\n    startsWith(ID, \"Luu\") ~ \"SWF\",\n    startsWith(ID, \"Met\") ~ \"SWF\",\n    startsWith(ID, \"Mor\") ~ \"Norway\",\n    startsWith(ID, \"Mus\") ~ \"SWF\",\n    startsWith(ID, \"Myl\") ~ \"SWF\",\n    startsWith(ID, \"Pam\") ~ \"NEF\",\n    startsWith(ID, \"Pat\") ~ \"NEF\",\n    startsWith(ID, \"Pet\") ~ \"SWF\",\n    startsWith(ID, \"Puk\") ~ \"SWF\",\n    startsWith(ID, \"Rus\") ~ \"Russia\",\n    startsWith(ID, \"Sig\") ~ \"Norway\",\n    startsWith(ID, \"Skj\") ~ \"Norway\",\n    startsWith(ID, \"eSK\") ~ \"Norway\",\n    startsWith(ID, \"Spk\") ~ \"Norway\",\n    startsWith(ID, \"Sus\") ~ \"SWF\",\n    startsWith(ID, \"Ulv\") ~ \"NEF\",\n    startsWith(ID, \"Van\") ~ \"NEF\",\n    startsWith(ID, \"Ves\") ~ \"SWF\"\n))\nIn the supplementary data, the authors forgot to add the location of the kai population, so I just assigned it to NEF. Let us see if that was the correct designation.\nKey: * SWF: South Western Finland * NEF: North Eastern Finland\nTo change the header of a column in R\n names(df)[names(df) == 'old.var.name'] &lt;- 'new.var.name'\nA basic barplot in ggplot. We can talk about facet wrap,\nggplot(input_file, aes(x=Individual, y =Mean.Depth, fill=Population)) +\ngeom_bar(stat = \"identity\") +\nfacet_wrap(~Location, scales = \"free_x\")",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#assessing-quality-of-the-vcf",
-    "href": "course_pop_stats.html#assessing-quality-of-the-vcf",
-    "title": "Population Statistics",
-    "section": "Assessing quality of the VCF",
-    "text": "Assessing quality of the VCF\nWe have a special version of VCFtools that supports haploid data (https://github.com/jydu/vcftools). Everything remains the same as the original version of VCFtools, with added support for haploid datasets that becomes important for some of the summary statistics. Have a look at the VCFtools manual to see the range of possible functions within this software (https://vcftools.sourceforge.net/man_latest.html).\nIn VCFtools, it is important to remember to use the –recode option if you would like to output a new VCF that is filtered or contains a subset of positions or individuals. –out only sets the name of the output file. Use concise names so that it is easy for you to see what’s in the output.\nLet us start by having a look at the sequencing depth of various aspects of the VCF. From the manual, figure out what each function means. Use less to see what’s in each of these output files.\nvcftools-haploid --vcf --depth \nvcftools --vcf --site-depth \nvcftools --vcf  --site-mean-depth\nNext, we want to see what the quality per site is\nvcftools --vcf --site-quality\nI prefer analysing these outputs in R. From there, decide on upper and lower boundaries to filter the variants on your scaffold. Justify why you think these filtering criteria are suitable.",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_pop_stats.html#statistics-per-chromosome",
-    "href": "course_pop_stats.html#statistics-per-chromosome",
-    "title": "Population Statistics",
-    "section": "Statistics per Chromosome",
-    "text": "Statistics per Chromosome\nKeep only the scaffold your group is working on in your folder\nvcftools --vcf --chr --recode\nFor downstream analyses, we need to remove all indels from the VCF\nvcftools --vcf --remove-indels --recode\nFor most analyses, we only consider bi-allelic sites\nvcftools --vcf --min-alleles 2 --max-alleles 2 --recode\nLook at allele frequency\nvcftools --vcf --freq \nTajima’s D in bins\nvcftools --vcf --TajimaD \nPi per site\nvcftools --vcf --site-pi\nPi per window\nvcftools --vcf --window-pi\nFst. Here, create a file of individuals from 6 populations (2 SWF, 2 NEF, Sweden, Poland) that you will use as pop1 and pop2 to do a pairwise Fst analysis to determine what the fixation index is. I have made a list of the individuals per population that you can find in the course repo on Github.\nvcftools --vcf --weir-fst-pop pop1 --weir-fst-pop pop2 -fst-window-size\nPCA that will also be plotted in R. For the PCA, you will plot the eigenvalues to illustrate what each component explains in your data, as well as PC1 and PC2, Pc2 and PC3, and PC3 and PC4.\nplink --vcf --pca\nIf there is a region that is under selection within your data, have a look at the gff3 file to see the genes that are present within the region.\nWith these kinds of analyses, you are very well on the way to finding regions that are under selection by combining Tajima’s D and Fst. You can show which regions have higher SNP density.",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Population Statistics"
-    ]
-  },
-  {
-    "objectID": "course_containers.html",
-    "href": "course_containers.html",
-    "title": "Containers",
-    "section": "",
-    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
+    "text": "Amrei Binzer-Panchal.\nWhen developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Containers"
+      "Nextflow"
     ]
   },
   {
-    "objectID": "course_containers.html#reproducibility-in-bioinformatics",
-    "href": "course_containers.html#reproducibility-in-bioinformatics",
-    "title": "Containers",
+    "objectID": "course_nextflow.html#workflow-managers",
+    "href": "course_nextflow.html#workflow-managers",
+    "title": "Nextflow",
+    "section": "Workflow managers",
+    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html#nextflow",
+    "href": "course_nextflow.html#nextflow",
+    "title": "Nextflow",
+    "section": "Nextflow",
+    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_solutions.html",
+    "href": "course_solutions.html",
+    "title": "Spoiler: Solutions",
     "section": "",
-    "text": "In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.\nIn reality, I would very likely run into at least one of the following problems:\n\nIt is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.\nAlmost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.\nIn bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.\nYou often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.\n\nAny of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.",
+    "text": "Extract scaffold 1\nRemove indels\nKeep biallelic sites only\nDepth\nSite depth\nSite mean depth\nTajima’s D\nPi per site\nPi in windows\nKeeping only certain individuals from populations\nRerun Tajima’s D on these VCFs/populations you have chosen. Of course, you can use the keep flag on the complete VCF without writing to a new VCF, saving some space.\nFST",
     "crumbs": [
       "Home",
-      "Background knowledge",
-      "Containers"
+      "Practicals",
+      "Spoiler: Solutions"
     ]
   },
   {
-    "objectID": "course_containers.html#containers",
-    "href": "course_containers.html#containers",
-    "title": "Containers",
-    "section": "Containers",
-    "text": "Containers\n\nWhat are containers?\nContainers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.\n\n\nRunning Containers\nThere are several programs that can be used to build and run containers. Docker, Appptainer, and Podman are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.\n\n\nDownloading Container Images\nThere are several repositories for people to publish container images that they have specified. Dockerhub and Seqera are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.\n\ndockerhub Tutorial\nOn the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.\n\n\n\ndockerhub landing page\n\n\nFor these tutorials, we’ll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.\n\n\n\nRegistry search\n\n\nYou can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The biocontainers and pegi3s profiles have builds for a lot of tools, and they are built really well!\nIf we click on the vcftools from biocontainers we get to a typical dockerhub image landing page:\n\n\n\nVCFtools page\n\n\nThere is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.\napptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1\nThis command has several parts to it:\n\napptainer calls on the Apptainer software to run\npull tells Apptainer which function to use. In this case, we want it to go fetch something from a repository\nvcftools_0.1.16-1.sif is the name of the container image on our local machine. We could call it I_Love_Dogs but that is not very informative at all. Your collaborator won’t know what it means, and you certainly won’t know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.\ndocker:// is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)\nbiocontainers/vcftools is the profile/repository and container you are pulling\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nFile format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices\n\n\n\nIf you are interested in a different version than the current version, there are other versions under the tags tab:\n\n\n\nContainer versions\n\n\nIf you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example\napptainer pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2\n\n\nSeqera Tutorial\nThe Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use bioconda, conda-forge, and pypi libraries to build their containers images with Wave. The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn’t a problem, but sometimes you want to use something that isn’t hosted there.\n\n\n\nSeqera containers landing page\n\n\nWhen you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer.\n\n\n\nSelecting Singularity\n\n\nSince Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the fetching container comment. Don’t try to pull it when it is still building!\n\n\n\nWaiting to build\n\n\nWhen the container image is ready, you can copy the text and pull the image to your system:\n\n\n\nReady to download\n\n\napptainer pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9\nHere we use oras:// instead of docker:// as we are pulling from the oras registry. We are also pulling a different version from Seqera, so the name of the container is different.\n\n\n\nRunning Containers\nOnce you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.\nThere are 2 different ways to use a container: run and exec. The apptainer run command launches the container and first runs the %runscript for the container if one is defined, and then runs your command (we will cover %runscript in the Building Containers section). The apptainer exec command will not run the %runscript even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the run or exec commands, you can use your software as you usually would\napptainer exec vcftools_0.1.17.sif vcftools --version\nThis command runs your vcftools_0.1.17.sif container from the image, calls on the program vcftools that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used\nvcftools --version\n\n\n\n\n\n\nImportant\n\n\n\nPlease remember that VCFtools is just an example. If you want to run any other tool everything after apptainer run or apptainer exec has to be substituted by the name of the specific container image and the run commands for that particular tool!\n\n\n\n\nBuilding Containers\nIf the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a definition file with the extension .def\nHere we are going to build a container with a cow telling us the date. Save this in a file called lolcow.def.\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    date | cowsay | lolcat    \nThere are several components to this definition file.\n\nYou can set the operating system you want in the container, in this case Ubuntu 20.04.\n%post section is where you update the OS from its base state, install dependencies and so on.\n%environment is where you export paths and modify the environment.\n%runscript is the script that will run when you use apptainer run container.sif. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the %runscript section, and use apptainer run container.sif date | cowsay | lolcat to get the same output.\n\napptainer build lolcow.sif lolcow.def\nYou’ll get a lot of output on the status of the build, ending in\nINFO:    Adding environment to container\nINFO:    Adding runscript\nINFO:    Creating SIF file...\nINFO:    Build complete: lolcow.sif\nWe can now run our new container with\napptainer run lolcow.sif\n\n\n\nBoring cow\n\n\n\n\n\n\n\n\nNote\n\n\n\nTry removing the %runscript, build it again, and see what happens.\n\n\nBootstrap: docker\nFrom: ubuntu:20.04\n\n%post\n    apt-get -y update\n    apt-get -y install cowsay lolcat fortune\n\n%environment\n    export LC_ALL=C\n    export PATH=/usr/games:$PATH\n\n%runscript\n    fortune | cowsay | lolcat    \nIf we use the same definition file as before, but substitute date for fortune in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:\n\n\n\nFun cow\n\n\n\n\n\nInspirational cow\n\n\nTo show the difference between the run and exec commands, we can use the same container with fortune in the runscript and run:\napptainer run lolcow.sif bash -c \"date|cowsay\"\nand\napptainer exec lolcow.sif bash -c \"date|cowsay\"\nThe run command gives us a philosophical cow while exec gives us our boring cow again.",
+    "objectID": "course_solutions.html#plotting-in-r",
+    "href": "course_solutions.html#plotting-in-r",
+    "title": "Spoiler: Solutions",
+    "section": "Plotting in R",
+    "text": "Plotting in R\nHere I just show you an example from the idepth file. You can remove lines not relevant for your populations. I just plotted across the entire dataset\nlibrary(dplyr)\nlibrary(ggplot2)\n\n#Plotting .idepth file \nidepth = read.delim(\"wherever_your_file_is\", header = T)\n\nnames(idepth)[names(idepth) == 'INDV'] &lt;- 'ID'\n\nidepth = idepth %&gt;%\n  mutate(Population = case_when(\n    startsWith(ID, \"BIL\") ~ \"bil\",\n    startsWith(ID, \"BNP\") ~ \"bnp\",\n    startsWith(ID, \"Her\") ~ \"her\",\n    startsWith(ID, \"Iss\") ~ \"iss\",\n    startsWith(ID, \"Kai\") ~ \"kai\",\n    startsWith(ID, \"Koi\") ~ \"koi\",\n    startsWith(ID, \"Kot\") ~ \"kot\",\n    startsWith(ID, \"Luu\") ~ \"luu\",\n    startsWith(ID, \"Met\") ~ \"met\",\n    startsWith(ID, \"Mor\") ~ \"mor\",\n    startsWith(ID, \"Mus\") ~ \"mus\",\n    startsWith(ID, \"Myl\") ~ \"myl\",\n    startsWith(ID, \"Pam\") ~ \"pam\",\n    startsWith(ID, \"Pat\") ~ \"pat\",\n    startsWith(ID, \"Pet\") ~ \"pet\",\n    startsWith(ID, \"Puk\") ~ \"puk\",\n    startsWith(ID, \"Rus\") ~ \"rus\",\n    startsWith(ID, \"Sig\") ~ \"sig\",\n    startsWith(ID, \"Skj\") ~ \"skj\",\n    startsWith(ID, \"eSK\") ~ \"skj\",\n    startsWith(ID, \"Spk\") ~ \"spk\",\n    startsWith(ID, \"Sus\") ~ \"sus\",\n    startsWith(ID, \"Ulv\") ~ \"ulv\",\n    startsWith(ID, \"Van\") ~ \"van\",\n    startsWith(ID, \"Ves\") ~ \"ves\"))\n    \nidepth = idepth %&gt;%\n      mutate(Location = case_when(\n        startsWith(ID, \"BIL\") ~ \"Sweden\",\n        startsWith(ID, \"BNP\") ~ \"Poland\",\n        startsWith(ID, \"Her\") ~ \"SWF\",\n        startsWith(ID, \"Iss\") ~ \"NEF\",\n        startsWith(ID, \"Kai\") ~ \"NEF\",\n        startsWith(ID, \"Koi\") ~ \"NEF\",\n        startsWith(ID, \"Kot\") ~ \"SWF\",\n        startsWith(ID, \"Luu\") ~ \"SWF\",\n        startsWith(ID, \"Met\") ~ \"SWF\",\n        startsWith(ID, \"Mor\") ~ \"Norway\",\n        startsWith(ID, \"Mus\") ~ \"SWF\",\n        startsWith(ID, \"Myl\") ~ \"SWF\",\n        startsWith(ID, \"Pam\") ~ \"NEF\",\n        startsWith(ID, \"Pat\") ~ \"NEF\",\n        startsWith(ID, \"Pet\") ~ \"SWF\",\n        startsWith(ID, \"Puk\") ~ \"SWF\",\n        startsWith(ID, \"Rus\") ~ \"Russia\",\n        startsWith(ID, \"Sig\") ~ \"Norway\",\n        startsWith(ID, \"Skj\") ~ \"Norway\",\n        startsWith(ID, \"eSK\") ~ \"Norway\",\n        startsWith(ID, \"Spk\") ~ \"Norway\",\n        startsWith(ID, \"Sus\") ~ \"SWF\",\n        startsWith(ID, \"Ulv\") ~ \"NEF\",\n        startsWith(ID, \"Van\") ~ \"NEF\",\n        startsWith(ID, \"Ves\") ~ \"SWF\"\n      ))\n\n#try with and without face_wrap\nggplot(idepth, aes(x=ID, y =MEAN_DEPTH, fill=Population)) +\n  geom_bar(stat = \"identity\") +\n  facet_wrap(~Location, scales = \"free_x\")",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Spoiler: Solutions"
+    ]
+  },
+  {
+    "objectID": "course_solutions.html#plotting-tajimas-d-all-vs-specific-populations",
+    "href": "course_solutions.html#plotting-tajimas-d-all-vs-specific-populations",
+    "title": "Spoiler: Solutions",
+    "section": "Plotting Tajima’s D all vs specific populations",
+    "text": "Plotting Tajima’s D all vs specific populations\nYou can change the type of plots you make. Change headers, xlab, and ylab\n#Plotting Tajima's D\ntaj.combined = read.delim(\"teaching/forest_popgen/all.tajd5000.Tajima.D\", header = T)\ntaj.bil = read.delim(\"teaching/forest_popgen/bil.tajd5000.Tajima.D\", header = T)\n\n#Mutating the add a column for population\ntaj.combined = mutate(taj.combined, Population = \"All\")\ntaj.bil = mutate(taj.bil, Population = \"BIL\")\n\n#combining the dataframes\ncombining.tajd = c('taj.combined', 'taj.bil')\nx.list = lapply(combining.tajd, get)\ncombined.tajd = do.call(rbind, x.list)\n\n#Plotting combined Tajima's D\nggplot(combined.tajd, aes(x= BIN_START, y = TajimaD, col=Population)) +\n  geom_line()",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Spoiler: Solutions"
+    ]
+  },
+  {
+    "objectID": "course_ai.html",
+    "href": "course_ai.html",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "",
+    "text": "Caution\n\n\n\nWhile the lure of AI is becoming more present in our daily lives, remember that you do not need it. You were perfectly able to design a packing list for your upcoming trip. You were able to look at a paper to find answers to your scientific questions. You knew how to query a vignette in R to determine how a function could be implemented.\nLife was a bit slower, but you used your mind and your agency. You made decisions. Please do not confuse convenience with need!",
     "crumbs": [
       "Home",
       "Background knowledge",
-      "Containers"
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_ai.html#introduction",
+    "href": "course_ai.html#introduction",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "Introduction",
+    "text": "Introduction\nIn the past 3 years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.\n\n\n\nSearching LLM with Google to be answered with an LLM response\n\n\nThese algorithms are language models trained on incredibly large datasets. They are trained to recognise and generate natural language. The chatbots we are all familiar with are generative pretrained transformers (GPTs). These can be trained for specific tasks, or guided by prompt generation.\nThis is not an AI theory course, and we really do not have enough knowledge to explain the underlying theory beyond a rudimentary level. We would like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_ai.html#machine-learning-in-bioinformatics",
+    "href": "course_ai.html#machine-learning-in-bioinformatics",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "Machine Learning in Bioinformatics",
+    "text": "Machine Learning in Bioinformatics\nMachine learning (ML) has been used in bioinformatics and other fields of data science for many decades on every level. Before ML, algorithms had to be programmed by hand rather than having the algorithms learn features of a dataset. With ML, features of a dataset can be annotated based on previously annotated datasets. These algorithms were a mix of supervised (learning on annotated data) and unsupervised (learning on unannotated data) learning, depending on the function of the algorithm.\nSupervised algorithms are used for classification and regression analyses. Unsupervised algorithms are used to discover hidden patterns in data without needing a human’s input. Unsupervised algorithms are used in clustering, association, and dimensionality reduction\n\n\n\n\n\n\nNote\n\n\n\n\n\nClassification: Output is a discrete variable. Linear classifiers, support vector machines, decision trees, random forests. E.g. annotating a new genome based on genome annotations from existing species.\nRegression: Focus on understanding dependent and indepedent variables\n\n\n\nFor more info, see here, and here.\nThere is no arguing that these algorithms have led to great progress within the field of bioinformatics. Generative AI is one of the next steps in the evolution of applying machine learning in our lives.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_ai.html#incorporation-of-ai-in-our-lives",
+    "href": "course_ai.html#incorporation-of-ai-in-our-lives",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "Incorporation of AI in Our Lives",
+    "text": "Incorporation of AI in Our Lives\nChatGPT gained 100 million users in the 2 months after its release in 2022, making it the fastest-growing consumr application in history. Generative AI (GenAI) models now come in many different flavours, depending on the developer.\n\n\n\nGenAI chatbots by market share in August 2025 from FirstPageSage\n\n\nAs with earlier iterations of supervised and unsupervised algorithms, these self-supervised algorithms also need data to be trained.\n\nTraining Data\nGenAI has all been trained on existing data. There has always been a bias in whose information gets captured. In a historical context, history was recorded by the party that won the war and destroyed existing knowledge. This also changed as different empires and narratives rose and fell. With digitisation, this information has landed on the internet. In the more modern “Internet Age”, everyone with an internet connection can technically post anything they’d like on the internet. There are different biases at play- not everyone has equal access to the internet, some people may not have strong enough opinions to post about something online, some people prefer to read rather than contribute, while others take pleasure in “shit-posting”.\nThe differences in how people use the internet have an effect on how useful the trained models become. In this example, you can clearly see what the effect of bad training data is.\n\n\n\nGenAI answer to a simple question\n\n\nGenAI’s are not programmed to say that they do not know something, and will happily hallucinate an answer. If you do not know better, or trust the computers, you may take this answer as true and post it elsewhere. As the use of AI’s increases, AI generated content is used to train new AI’s. Gary Illyes from Google has spoken about “human curated” vs “human created” data being used as training data.\nIn a perfect world, GenAI would be trained on perfectly curated data, but even with all of the data that we have on the internet at the moment, we do not have nearly enough data for this. We have to make do with what we have.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_ai.html#some-words-of-caution",
+    "href": "course_ai.html#some-words-of-caution",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "Some Words of Caution",
+    "text": "Some Words of Caution\nGenAI is becoming more integrated in every sector of our lives. It is important that we use the new technology responsibly. When Google first came out, there were classes on how to use the search engine, determine validity of sources and information, and how to stay safe on the internet. This section aims to raise awareness about commonly overlooked aspects of GPT use.\n\nLearning with AI\nAI has great potential in the field of education. ChatGPT has been shown to be highly beneficial in an educational environment when integrated properly. However, the use of AI in this setting must be balanced and carefully curated. A 2025 pre-print by Kosmyna et al showed that adults that used ChatGPT to write SAT type essays were outperformed consistently by adults that wrote the same essay without the support of an AI, and had significantly lower brain engagement.\n\n\nProductivity with AI\nA recent study by a non-profit group, Model Evaluation and Threat Research [(METR)https://metr.org/] aimed to quantify the difference in productivity when using AI. Participants in this study were not new to their field, with at least 5 years of experience prior to this study being conducted.\n\n\n\nAI reducing productivity\n\n\nThe study also found that when AI is allowed, the participants spent less time coding and seeking solutions to the problems. Rather, they spent time prompting the AI, reading and reviewing responses, and being idle. Intel produced similar findings.\n\n\n\nReasons for loss of productivity with AI\n\n\nIf one combines the effect of passively learning with AI and the loss of productivity with, it becomes clear that AI must be used very carefully.\n\n\nData Privacy and Legal Concerns\nData privacy has been vital in the development and use of AI. The use of copyrighted material in training AI is being discussed and debated in several courts. The questions around using text and data mining are divisive with some parties arguing that finding patterns, trends, and insights in existing data being how new research is done by humans and should be extended to AI, while others, particularly in the European context, disagree to some extent. Understanding the legality of the service you use in different countries falls on you as a user.\nThe Terms of Service (ToS) of different GPTs are important when deciding whether to use a GPT at all. For example, Deepseek’s ToS (collected on 15.08.2025) states\nAccount Personal Data. We collect Personal Data that you provide when you set up an account, such as your date of birth (where applicable), username (where applicable), email address and/or telephone number, and password.\nUser Input. When you use our Services, we may collect your text input, prompt, uploaded files, feedback, chat history, or other content that you provide to our model and Services (“Prompts” or \"Inputs\"). We generate responses (“Outputs”) based on your Inputs.\nPersonal Data When You Contact Us. When you contact us, we collect the Personal Data you send us, such as proof of identity or age, contact details, feedback or inquiries about your use of the Services or Personal Data about possible violations of our Terms of Service (our “Terms”) or other policies.\nBiological data enjoys a high level of protection, and is often considered as highly sensitive. Too often, users will input sequences, tables, or other data into a GPT to find ways to plot data, perform sequence annotations, or similar tasks. Be wary of doing this. Check the ToS explicitly, and frequently. Try to use GDPR compliant GPT’s if you must use a GPT.\nAI as browser extensions steal deeply personal information when enabled in a users’ browser including financial, education, and medical information, whether an extension is being actively used or not. The authors have also commented on how these practices interfere with the company’s own ToS as well as privacy legislation.\n\n\nPersonal Responsibility\nYou as a user are responsible for the AI generated content you choose to use. If you, for instance, ask AI to generate a brand logo for you that is too close to something that exists already, the original owner is free to sue you as an individual for copyright infringement.\nAs scientists, we know that we should use peer-reviewed resources whenever possible. It is why we cannot cite Wikipedia in a scientific article. GPT’s have been widely shown to fabricate citations based on how it has learnt a citation should look. It is up to you as a user to check every single citation that AI generates since you are responsible for what you write.\n\n\nGlobal Linguistic Changes\nEven though ChatGPT has only been widely used for 3 years, it has already started leaving its traces in how we speak. Words like delve and meticulous are being used more frequently in academic YouTube talks.\n\n\n\nGPT words in YouTube videos from Yakura et al 2025\n\n\nIt has also been shown that different GPT’s have different writing styles, also known as idiolects.\nSome projects like this one are trying to match GPT ideolects match that of unique users. This will make detecting AI use more difficult in future.\n\n\n\n\n\n\nThis course was written by two people, and each person wrote their own sections without the use of any AI. Can you tell who wrote which sections based on idiolects?\n\n\n\nWe know that subtle linguistic shifts can change emotional regulation within an individual. We also know that sociolinguistics, even the slightest linguistic features, serve to bind or divide us.\n\n\nAI on the Internet\nSocial media platforms are an important aspect in the development, improvement, and implementation of GenAI models. OpenAI, the creators of ChatGPT, have used a subreddit on the social media platform, Reddit, to train their new algorithm. Google and OpenAI have contractual agreements with Reddit to license data from the users on the platform. Earlier in 2025, researchers from the University of Zurich were implicated in an experiment on the same subreddit OpenAI used to train a model. They wanted to test whether an interaction with a bot was more likely to make people change their minds than an interaction with a real person. This was heavily frowned upon, and posts were all removed as users had no ability to consent to participating in a study. It has also been suggested that interactions observed by the researchers were just bots arguing with each other.\nA preprint released in February 2025 by Liang et al found that the amount of content generated by AI rose from 2-3% in November 2022 to 24% by the end of 2023.\n\n\n\nAI slop trough by Yahoo! News!\n\n\n\n\nEnvironmnetal Impact\nThe facilities to run GenAI require a significant amount of resources. These facilities need a huge amount of electricity to power the facility (this places extreme strain on exising infrastructure and increases the grid’s carbon footprint) as well as water to cool the hardware. Currently, data centers use more electricity than many independent countries.\nSome data centers are being built near poor communities, drain resources from, and add pollution to the community (see Colossus that has been built in Memphis to power the X bot, Grok for an example. Musk is not the only offender.)\nWhile we cannot do anything about where data centers are built, we can make informed decisions about which platforms (if any), we use. We can also be careful with the number of queries we send, and how we use our queries. In April 2025, the CEO of OpenAI said that polite requests like “please” and “thank you” have cost tens of millions of dollars due to the cost of electricity.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_ai.html#how-to-decide-when-to-use-ai",
+    "href": "course_ai.html#how-to-decide-when-to-use-ai",
+    "title": "Caution: AI in Bioinformatics",
+    "section": "How To Decide When To Use AI",
+    "text": "How To Decide When To Use AI\nIf we know the risks and the true cost of what we are doing, we can make informed decisions about how we chose to incorporate new technologies into our day-to-day and working lives.\nHere are some questions that we find useful to ask ourselves before opening a GPT:\n\nAm I phrasing my prompt in a good way? Here is a guide to prompt engineering that might be useful\nCan I find this information any other way?\nHow much time am I saving by looking this question up here vs on BioStars, for example?\nDo I know enough about the topic to know whether the GPT is lying to me?\nWhat are the consequences of testing the validity of the GPT solution? Can I potentially corrupt my data or my system? Is there a potential for me to lie to someone who trusts me enough to ask my opinion?\n\nIf a GPT is used to learn a new skill, remember how important active learning is. Seek explanations for everything the GPT tells you. Find independent sources that were produced by experts to validate your learning.\nHold on to the ability to learn and the desire to be curious.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "Caution: AI in Bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_linux.html",
+    "href": "course_linux.html",
+    "title": "A Brief Introduction to Linux",
+    "section": "",
+    "text": "Unix-like operating systems are built under the model of free and open-source development and distribution. They often come with a graphical user interface (GUI) and can be run from the command line (CLI) or terminal. The CLI is a text-based interface that works exactly the same way as you would use your mouse, but you use words. It can be intimidating at first, but once you have mastered the basics, it’s really not different than using your mouse!\nIt is important to know how to use the terminal as all servers, and most bioinformatics tools do not have a GUI and rely on the use of the terminal.\n\n\n\n\n\n\nWarning\n\n\n\nMacOS and Linux, and Windows have significant differences in their syntax. Where we do things locally, we will point out some of the differences, but for the most part, we will provide Windows users with a local Linux platform so that this course can run as smoothly as possible\n\n\nFor this course, we do not expect you to be masters of Linux, but we will need some knowledge of how to find files, and some other basic Linux commands.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "A Brief Introduction to Linux"
+    ]
+  },
+  {
+    "objectID": "course_linux.html#introduction",
+    "href": "course_linux.html#introduction",
+    "title": "A Brief Introduction to Linux",
+    "section": "",
+    "text": "Unix-like operating systems are built under the model of free and open-source development and distribution. They often come with a graphical user interface (GUI) and can be run from the command line (CLI) or terminal. The CLI is a text-based interface that works exactly the same way as you would use your mouse, but you use words. It can be intimidating at first, but once you have mastered the basics, it’s really not different than using your mouse!\nIt is important to know how to use the terminal as all servers, and most bioinformatics tools do not have a GUI and rely on the use of the terminal.\n\n\n\n\n\n\nWarning\n\n\n\nMacOS and Linux, and Windows have significant differences in their syntax. Where we do things locally, we will point out some of the differences, but for the most part, we will provide Windows users with a local Linux platform so that this course can run as smoothly as possible\n\n\nFor this course, we do not expect you to be masters of Linux, but we will need some knowledge of how to find files, and some other basic Linux commands.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "A Brief Introduction to Linux"
+    ]
+  },
+  {
+    "objectID": "course_linux.html#filesystem-architecture",
+    "href": "course_linux.html#filesystem-architecture",
+    "title": "A Brief Introduction to Linux",
+    "section": "Filesystem Architecture",
+    "text": "Filesystem Architecture\nLinux uses a hierarchical filesystem, similar to Windows and Mac. In this figure from TecAdmin, there is a representation of this.\n\n\n\nFilesystem\n\n\nWe can see here that the root or / folder is at the top of the hierarchy, with all other folders, like home/ and var/ inside of it.\n\n\n\n\n\n\nNote\n\n\n\n\n\nWe use / at the end of a folder name to show that it is a folder.\n\n\n\nThere are two different ways for us to know where our file is within the operating system. The first is the absolute path and the second is the relative path. The absolute path gives us information that is true anywhere on your operating system. Whether your terminal is open in /usr/bin/something/ or /var/tmp/, a file will always be located at /usr/Documents/sequence.fasta as it is the true or absolute location. The relative path, as the name suggests, is relative to where you currently are on the file tree. If your terminal is open in /usr/Documents/paper/figures/linux/, the file from before, sequence.fasta will be two folders up from where you are. If you were in /var/bin/something/ it would three folder up, one to the side, and two folders down.\n\n\n\n\n\n\nTip\n\n\n\n\n\nIt is often good practice to use absolute paths when you set pipelines up to run- this way, your programs know where to go looking for the files they’re supposed to work on",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "A Brief Introduction to Linux"
+    ]
+  },
+  {
+    "objectID": "course_linux.html#connecting-to-a-server",
+    "href": "course_linux.html#connecting-to-a-server",
+    "title": "A Brief Introduction to Linux",
+    "section": "Connecting to a Server",
+    "text": "Connecting to a Server\nThere are many different ways you can connect to a server with SSH. At SLUBI, we have a strong preference towards Visual Studio Code or its open-source alternative, VSCodium. It provides a graphical user interface where you can create, edit, and view files, and see the file system.\nTo be able to connect to a server, you need to install an extension called Remote-SSH from the extensions market place.\n\n\n\nExtensions from View\n\n\n\n\n\nExtensions from the shortcut\n\n\nNow we need to add a host to our list of known hosts. There are several ways of doing this, and all ways lead to establishing a connection.\n\nUnder the previously shown View option, navigate to the Command Palette. A dropdown menu at the top will start with a &gt;. Type Remote-SSH and select add new host. Here we will input our credentials. This will populate a file in a hidden folder, .ssh in your local home directories called known_hosts.\nYou can also write all of these lines manually. This way, you can also specify SSH keys that may be needed to log on to particular servers. We won’t be covering that in this course, though.\n\nAfter a host has been added, you can connect to it. You can do this either through the Command Palette, or through the small blue backwards and forwards arrows in the bottom left corner of VSCode. You will receive a list of known hosts that you can connect to. If you need to connect with a password, a password prompt will be shown.\nOnce connected, you can open the file manager on the left.\nFor privacy concerns, we will share the exact commands locally in the room.\n\n\n\n\n\n\nImportant\n\n\n\nRemeber to only open either your home directories or the folder for your projects with the file manager. If you try to open folders that are too large, you will cause VSCode to crash (and you may cause significant problems for your system administrator!)",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "A Brief Introduction to Linux"
+    ]
+  },
+  {
+    "objectID": "course_linux.html#navigating-with-the-terminal",
+    "href": "course_linux.html#navigating-with-the-terminal",
+    "title": "A Brief Introduction to Linux",
+    "section": "Navigating with the terminal",
+    "text": "Navigating with the terminal\nFor this part of the session, we will do some hands-on practice! For this, we will open a terminal. You can do this through the Command Palette by using the View: Toggle Terminal function, or clicking the box with a dark bottom half and an empty top half in the top right corner of VSCode.\n\n\n\n\n\n\nNote\n\n\n\n\n\nFor Windows Users If you are using a Windows operating system, you can install the free Home edition of MobaXterm when your access to this server is removed if you want to continue practicing your Linux skills.\nTo use MobaXterm as a Linux shell, click on New Session and select a bash shell. There will probably be a prompt that you have to installl an extension. Click on the link it will provide, or copy the extension it needs and search it on Google (or your preferred search engine) and install it. Then try starting a new session again.\n\n\n\nTo see where we currently are in the filesystem, we use the present working directory command. This will give us the absolute path of the directory that our terminal open in.\npwd\nTo see the files that are currently in the directory we use the list command.\nls\nTo make a directory, we use the make directory command, followed by the name we would like our directory to have. Here we will make a directory called sida_training.\nmkdir sida_training\n\n\n\n\n\n\nTip\n\n\n\n\n\nWhen we give files and folders names, we don’t use spaces or special characters. It makes it really difficult to access files. We can use different ways to name our files and folders 1. youcanbechaoticandusenothing 2. YouCanUseCapitalLetters 3. you_can_use_underscores 4. you-can-use-dashes The most important thing is to be consistent with what you use, and to use descriptive names that are not too long. Future you will thank past you!\n\n\n\nTo enter the sida_training directory, we will use the change directory command.\ncd sida_training\nWe can use the pwd command again just to make sure that we are indeed in the right folder.\nTo go back to the folder we were in previously, we can use a shortcut rather than the absolute path.\ncd ..\n\n\n\n\n\n\nTip\n\n\n\n\n\nThere are no limits to the amount of directories you can go back (provided they are in your filesystem). If you wanted to go up 3 directories, you’d use\ncd ../../..\n\n\n\nTo delete files and folder you use the remove command. If you want to remove a folder, you need a recursive flag.\nrm -r sida_training\nIf we had a file to look at, we could use the less command. In the interface, we press q to quit.\nless filename\nWith these Linux basics, you will certainly be able to follow our course. If you would like to learn more, Data Carpentry and Software Carpentry have excellent tutorials on using the terminal in more detail, and we can only recommend them!",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "A Brief Introduction to Linux"
     ]
   },
   {
@@ -340,262 +433,6 @@
       "Home",
       "Practicals",
       "Population Structure"
-    ]
-  },
-  {
-    "objectID": "course_ai.html",
-    "href": "course_ai.html",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "",
-    "text": "Caution\n\n\n\nWhile the lure of AI is becoming more present in our daily lives, remember that you do not need it. You were perfectly able to design a packing list for your upcoming trip. You were able to look at a paper to find answers to your scientific questions. You knew how to query a vignette in R to determine how a function could be implemented.\nLife was a bit slower, but you used your mind and your agency. You made decisions. Please do not confuse convenience with need!",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_ai.html#introduction",
-    "href": "course_ai.html#introduction",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "Introduction",
-    "text": "Introduction\nIn the past 3 years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.\n\n\n\nSearching LLM with Google to be answered with an LLM response\n\n\nThese algorithms are language models trained on incredibly large datasets. They are trained to recognise and generate natural language. The chatbots we are all familiar with are generative pretrained transformers (GPTs). These can be trained for specific tasks, or guided by prompt generation.\nThis is not an AI theory course, and we really do not have enough knowledge to explain the underlying theory beyond a rudimentary level. We would like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_ai.html#machine-learning-in-bioinformatics",
-    "href": "course_ai.html#machine-learning-in-bioinformatics",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "Machine Learning in Bioinformatics",
-    "text": "Machine Learning in Bioinformatics\nMachine learning (ML) has been used in bioinformatics and other fields of data science for many decades on every level. Before ML, algorithms had to be programmed by hand rather than having the algorithms learn features of a dataset. With ML, features of a dataset can be annotated based on previously annotated datasets. These algorithms were a mix of supervised (learning on annotated data) and unsupervised (learning on unannotated data) learning, depending on the function of the algorithm.\nSupervised algorithms are used for classification and regression analyses. Unsupervised algorithms are used to discover hidden patterns in data without needing a human’s input. Unsupervised algorithms are used in clustering, association, and dimensionality reduction\n\n\n\n\n\n\nNote\n\n\n\n\n\nClassification: Output is a discrete variable. Linear classifiers, support vector machines, decision trees, random forests. E.g. annotating a new genome based on genome annotations from existing species.\nRegression: Focus on understanding dependent and indepedent variables\n\n\n\nFor more info, see here, and here.\nThere is no arguing that these algorithms have led to great progress within the field of bioinformatics. Generative AI is one of the next steps in the evolution of applying machine learning in our lives.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_ai.html#incorporation-of-ai-in-our-lives",
-    "href": "course_ai.html#incorporation-of-ai-in-our-lives",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "Incorporation of AI in Our Lives",
-    "text": "Incorporation of AI in Our Lives\nChatGPT gained 100 million users in the 2 months after its release in 2022, making it the fastest-growing consumr application in history. Generative AI (GenAI) models now come in many different flavours, depending on the developer.\n\n\n\nGenAI chatbots by market share in August 2025 from FirstPageSage\n\n\nAs with earlier iterations of supervised and unsupervised algorithms, these self-supervised algorithms also need data to be trained.\n\nTraining Data\nGenAI has all been trained on existing data. There has always been a bias in whose information gets captured. In a historical context, history was recorded by the party that won the war and destroyed existing knowledge. This also changed as different empires and narratives rose and fell. With digitisation, this information has landed on the internet. In the more modern “Internet Age”, everyone with an internet connection can technically post anything they’d like on the internet. There are different biases at play- not everyone has equal access to the internet, some people may not have strong enough opinions to post about something online, some people prefer to read rather than contribute, while others take pleasure in “shit-posting”.\nThe differences in how people use the internet have an effect on how useful the trained models become. In this example, you can clearly see what the effect of bad training data is.\n\n\n\nGenAI answer to a simple question\n\n\nGenAI’s are not programmed to say that they do not know something, and will happily hallucinate an answer. If you do not know better, or trust the computers, you may take this answer as true and post it elsewhere. As the use of AI’s increases, AI generated content is used to train new AI’s. Gary Illyes from Google has spoken about “human curated” vs “human created” data being used as training data.\nIn a perfect world, GenAI would be trained on perfectly curated data, but even with all of the data that we have on the internet at the moment, we do not have nearly enough data for this. We have to make do with what we have.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_ai.html#some-words-of-caution",
-    "href": "course_ai.html#some-words-of-caution",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "Some Words of Caution",
-    "text": "Some Words of Caution\nGenAI is becoming more integrated in every sector of our lives. It is important that we use the new technology responsibly. When Google first came out, there were classes on how to use the search engine, determine validity of sources and information, and how to stay safe on the internet. This section aims to raise awareness about commonly overlooked aspects of GPT use.\n\nLearning with AI\nAI has great potential in the field of education. ChatGPT has been shown to be highly beneficial in an educational environment when integrated properly. However, the use of AI in this setting must be balanced and carefully curated. A 2025 pre-print by Kosmyna et al showed that adults that used ChatGPT to write SAT type essays were outperformed consistently by adults that wrote the same essay without the support of an AI, and had significantly lower brain engagement.\n\n\nProductivity with AI\nA recent study by a non-profit group, Model Evaluation and Threat Research [(METR)https://metr.org/] aimed to quantify the difference in productivity when using AI. Participants in this study were not new to their field, with at least 5 years of experience prior to this study being conducted.\n\n\n\nAI reducing productivity\n\n\nThe study also found that when AI is allowed, the participants spent less time coding and seeking solutions to the problems. Rather, they spent time prompting the AI, reading and reviewing responses, and being idle. Intel produced similar findings.\n\n\n\nReasons for loss of productivity with AI\n\n\nIf one combines the effect of passively learning with AI and the loss of productivity with, it becomes clear that AI must be used very carefully.\n\n\nData Privacy and Legal Concerns\nData privacy has been vital in the development and use of AI. The use of copyrighted material in training AI is being discussed and debated in several courts. The questions around using text and data mining are divisive with some parties arguing that finding patterns, trends, and insights in existing data being how new research is done by humans and should be extended to AI, while others, particularly in the European context, disagree to some extent. Understanding the legality of the service you use in different countries falls on you as a user.\nThe Terms of Service (ToS) of different GPTs are important when deciding whether to use a GPT at all. For example, Deepseek’s ToS (collected on 15.08.2025) states\nAccount Personal Data. We collect Personal Data that you provide when you set up an account, such as your date of birth (where applicable), username (where applicable), email address and/or telephone number, and password.\nUser Input. When you use our Services, we may collect your text input, prompt, uploaded files, feedback, chat history, or other content that you provide to our model and Services (“Prompts” or \"Inputs\"). We generate responses (“Outputs”) based on your Inputs.\nPersonal Data When You Contact Us. When you contact us, we collect the Personal Data you send us, such as proof of identity or age, contact details, feedback or inquiries about your use of the Services or Personal Data about possible violations of our Terms of Service (our “Terms”) or other policies.\nBiological data enjoys a high level of protection, and is often considered as highly sensitive. Too often, users will input sequences, tables, or other data into a GPT to find ways to plot data, perform sequence annotations, or similar tasks. Be wary of doing this. Check the ToS explicitly, and frequently. Try to use GDPR compliant GPT’s if you must use a GPT.\nAI as browser extensions steal deeply personal information when enabled in a users’ browser including financial, education, and medical information, whether an extension is being actively used or not. The authors have also commented on how these practices interfere with the company’s own ToS as well as privacy legislation.\n\n\nPersonal Responsibility\nYou as a user are responsible for the AI generated content you choose to use. If you, for instance, ask AI to generate a brand logo for you that is too close to something that exists already, the original owner is free to sue you as an individual for copyright infringement.\nAs scientists, we know that we should use peer-reviewed resources whenever possible. It is why we cannot cite Wikipedia in a scientific article. GPT’s have been widely shown to fabricate citations based on how it has learnt a citation should look. It is up to you as a user to check every single citation that AI generates since you are responsible for what you write.\n\n\nGlobal Linguistic Changes\nEven though ChatGPT has only been widely used for 3 years, it has already started leaving its traces in how we speak. Words like delve and meticulous are being used more frequently in academic YouTube talks.\n\n\n\nGPT words in YouTube videos from Yakura et al 2025\n\n\nIt has also been shown that different GPT’s have different writing styles, also known as idiolects.\nSome projects like this one are trying to match GPT ideolects match that of unique users. This will make detecting AI use more difficult in future.\n\n\n\n\n\n\nThis course was written by two people, and each person wrote their own sections without the use of any AI. Can you tell who wrote which sections based on idiolects?\n\n\n\nWe know that subtle linguistic shifts can change emotional regulation within an individual. We also know that sociolinguistics, even the slightest linguistic features, serve to bind or divide us.\n\n\nAI on the Internet\nSocial media platforms are an important aspect in the development, improvement, and implementation of GenAI models. OpenAI, the creators of ChatGPT, have used a subreddit on the social media platform, Reddit, to train their new algorithm. Google and OpenAI have contractual agreements with Reddit to license data from the users on the platform. Earlier in 2025, researchers from the University of Zurich were implicated in an experiment on the same subreddit OpenAI used to train a model. They wanted to test whether an interaction with a bot was more likely to make people change their minds than an interaction with a real person. This was heavily frowned upon, and posts were all removed as users had no ability to consent to participating in a study. It has also been suggested that interactions observed by the researchers were just bots arguing with each other.\nA preprint released in February 2025 by Liang et al found that the amount of content generated by AI rose from 2-3% in November 2022 to 24% by the end of 2023.\n\n\n\nAI slop trough by Yahoo! News!\n\n\n\n\nEnvironmnetal Impact\nThe facilities to run GenAI require a significant amount of resources. These facilities need a huge amount of electricity to power the facility (this places extreme strain on exising infrastructure and increases the grid’s carbon footprint) as well as water to cool the hardware. Currently, data centers use more electricity than many independent countries.\nSome data centers are being built near poor communities, drain resources from, and add pollution to the community (see Colossus that has been built in Memphis to power the X bot, Grok for an example. Musk is not the only offender.)\nWhile we cannot do anything about where data centers are built, we can make informed decisions about which platforms (if any), we use. We can also be careful with the number of queries we send, and how we use our queries. In April 2025, the CEO of OpenAI said that polite requests like “please” and “thank you” have cost tens of millions of dollars due to the cost of electricity.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_ai.html#how-to-decide-when-to-use-ai",
-    "href": "course_ai.html#how-to-decide-when-to-use-ai",
-    "title": "Caution: AI in Bioinformatics",
-    "section": "How To Decide When To Use AI",
-    "text": "How To Decide When To Use AI\nIf we know the risks and the true cost of what we are doing, we can make informed decisions about how we chose to incorporate new technologies into our day-to-day and working lives.\nHere are some questions that we find useful to ask ourselves before opening a GPT:\n\nAm I phrasing my prompt in a good way? Here is a guide to prompt engineering that might be useful\nCan I find this information any other way?\nHow much time am I saving by looking this question up here vs on BioStars, for example?\nDo I know enough about the topic to know whether the GPT is lying to me?\nWhat are the consequences of testing the validity of the GPT solution? Can I potentially corrupt my data or my system? Is there a potential for me to lie to someone who trusts me enough to ask my opinion?\n\nIf a GPT is used to learn a new skill, remember how important active learning is. Seek explanations for everything the GPT tells you. Find independent sources that were produced by experts to validate your learning.\nHold on to the ability to learn and the desire to be curious.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Caution: AI in Bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_exercises.html",
-    "href": "course_exercises.html",
-    "title": "Discussion Guiding Questions",
-    "section": "",
-    "text": "When do you use AI?\nWhat kinds of AI do you use?\nWhy do you choose to delegate certain tasks to AI?\nHow do you retain agency over your work when there is pressure on you to adopt AI to a large extent?\nHow do you implement the 4 D’s framework?",
-    "crumbs": [
-      "Home",
-      "Discussion",
-      "Discussion Guiding Questions"
-    ]
-  },
-  {
-    "objectID": "course_exercises.html#ai-use",
-    "href": "course_exercises.html#ai-use",
-    "title": "Discussion Guiding Questions",
-    "section": "",
-    "text": "When do you use AI?\nWhat kinds of AI do you use?\nWhy do you choose to delegate certain tasks to AI?\nHow do you retain agency over your work when there is pressure on you to adopt AI to a large extent?\nHow do you implement the 4 D’s framework?",
-    "crumbs": [
-      "Home",
-      "Discussion",
-      "Discussion Guiding Questions"
-    ]
-  },
-  {
-    "objectID": "course_exercises.html#population-genomicsbioinformatics",
-    "href": "course_exercises.html#population-genomicsbioinformatics",
-    "title": "Discussion Guiding Questions",
-    "section": "Population Genomics/Bioinformatics",
-    "text": "Population Genomics/Bioinformatics\n\nWhat are some of the technologies that can be used to produce population genomics data?\n\nLong read vs short read\nSoftware constraints\n\nIs it always sensible to do whole genome sequencing?\nWhat are some things to consider with pooled samples?\nWhat are some things you need to consider when it comes to choosing the sequencing platform?\nWhen might you consider using a ready-made pipeline like the Sarek pipeline over something you have written yourself?\nWhat kind of criteria should you consider when filtering your variants you produce from your variant calling pipeline of choice?\nWhy should you consider more than one k when doing population structure analyses?\nHow can you see population genomics being integrated with other fields of study? (comparative genomics, pangenomics, structural biology?)\nWhat is the future of population genetics/genomics? Where are we heading, and what kinds of data should we be planning to consider?\nHow do we make use of the principles of homology and orthology in functional and structural prediction?\n\ndoes chr match genomewide\nannotate proteins alphafold3 deeploc2\nextract specific gene seq tools\ncircos :/\nHere are some tutorials where you can change assumptions to see how your populations are affected * PopG Online * learnPopGen",
-    "crumbs": [
-      "Home",
-      "Discussion",
-      "Discussion Guiding Questions"
-    ]
-  },
-  {
-    "objectID": "course_exercises.html#end-of-course-evaluation",
-    "href": "course_exercises.html#end-of-course-evaluation",
-    "title": "Discussion Guiding Questions",
-    "section": "End of Course Evaluation",
-    "text": "End of Course Evaluation\n\nDuring the course, you have completed several exercises on a chromosome. As a final assignment, please compile your code and your results into a markdown document and render it. You are welcome to use Quarto or R Markdown.\nExplain what your code does and why you selected certain parameters. (E.g. why did you use a window size of 1000 instead of 100000). Select a region that is under selection on the chromosome you have worked with.\n\n\nExplain what you see in this region and what it tells you about what might be going on in the environment or within the population to result in this signature\nCreate a 3D structure of a protein of interest in this region. Why do you think this region may be experiencing the\n\n\nCompare your results with the findings of the paper. Did subsetting the data make a difference? Why did we do this? What are the impacts?\nWhat are the next steps? What haven’t we done?",
-    "crumbs": [
-      "Home",
-      "Discussion",
-      "Discussion Guiding Questions"
-    ]
-  },
-  {
-    "objectID": "course_solutions.html",
-    "href": "course_solutions.html",
-    "title": "Spoiler: Solutions",
-    "section": "",
-    "text": "Extract scaffold 1\nRemove indels\nKeep biallelic sites only\nDepth\nSite depth\nSite mean depth\nTajima’s D\nPi per site\nPi in windows\nKeeping only certain individuals from populations\nRerun Tajima’s D on these VCFs/populations you have chosen. Of course, you can use the keep flag on the complete VCF without writing to a new VCF, saving some space.\nFST",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Spoiler: Solutions"
-    ]
-  },
-  {
-    "objectID": "course_solutions.html#plotting-in-r",
-    "href": "course_solutions.html#plotting-in-r",
-    "title": "Spoiler: Solutions",
-    "section": "Plotting in R",
-    "text": "Plotting in R\nHere I just show you an example from the idepth file. You can remove lines not relevant for your populations. I just plotted across the entire dataset\nlibrary(dplyr)\nlibrary(ggplot2)\n\n#Plotting .idepth file \nidepth = read.delim(\"wherever_your_file_is\", header = T)\n\nnames(idepth)[names(idepth) == 'INDV'] &lt;- 'ID'\n\nidepth = idepth %&gt;%\n  mutate(Population = case_when(\n    startsWith(ID, \"BIL\") ~ \"bil\",\n    startsWith(ID, \"BNP\") ~ \"bnp\",\n    startsWith(ID, \"Her\") ~ \"her\",\n    startsWith(ID, \"Iss\") ~ \"iss\",\n    startsWith(ID, \"Kai\") ~ \"kai\",\n    startsWith(ID, \"Koi\") ~ \"koi\",\n    startsWith(ID, \"Kot\") ~ \"kot\",\n    startsWith(ID, \"Luu\") ~ \"luu\",\n    startsWith(ID, \"Met\") ~ \"met\",\n    startsWith(ID, \"Mor\") ~ \"mor\",\n    startsWith(ID, \"Mus\") ~ \"mus\",\n    startsWith(ID, \"Myl\") ~ \"myl\",\n    startsWith(ID, \"Pam\") ~ \"pam\",\n    startsWith(ID, \"Pat\") ~ \"pat\",\n    startsWith(ID, \"Pet\") ~ \"pet\",\n    startsWith(ID, \"Puk\") ~ \"puk\",\n    startsWith(ID, \"Rus\") ~ \"rus\",\n    startsWith(ID, \"Sig\") ~ \"sig\",\n    startsWith(ID, \"Skj\") ~ \"skj\",\n    startsWith(ID, \"eSK\") ~ \"skj\",\n    startsWith(ID, \"Spk\") ~ \"spk\",\n    startsWith(ID, \"Sus\") ~ \"sus\",\n    startsWith(ID, \"Ulv\") ~ \"ulv\",\n    startsWith(ID, \"Van\") ~ \"van\",\n    startsWith(ID, \"Ves\") ~ \"ves\"))\n    \nidepth = idepth %&gt;%\n      mutate(Location = case_when(\n        startsWith(ID, \"BIL\") ~ \"Sweden\",\n        startsWith(ID, \"BNP\") ~ \"Poland\",\n        startsWith(ID, \"Her\") ~ \"SWF\",\n        startsWith(ID, \"Iss\") ~ \"NEF\",\n        startsWith(ID, \"Kai\") ~ \"NEF\",\n        startsWith(ID, \"Koi\") ~ \"NEF\",\n        startsWith(ID, \"Kot\") ~ \"SWF\",\n        startsWith(ID, \"Luu\") ~ \"SWF\",\n        startsWith(ID, \"Met\") ~ \"SWF\",\n        startsWith(ID, \"Mor\") ~ \"Norway\",\n        startsWith(ID, \"Mus\") ~ \"SWF\",\n        startsWith(ID, \"Myl\") ~ \"SWF\",\n        startsWith(ID, \"Pam\") ~ \"NEF\",\n        startsWith(ID, \"Pat\") ~ \"NEF\",\n        startsWith(ID, \"Pet\") ~ \"SWF\",\n        startsWith(ID, \"Puk\") ~ \"SWF\",\n        startsWith(ID, \"Rus\") ~ \"Russia\",\n        startsWith(ID, \"Sig\") ~ \"Norway\",\n        startsWith(ID, \"Skj\") ~ \"Norway\",\n        startsWith(ID, \"eSK\") ~ \"Norway\",\n        startsWith(ID, \"Spk\") ~ \"Norway\",\n        startsWith(ID, \"Sus\") ~ \"SWF\",\n        startsWith(ID, \"Ulv\") ~ \"NEF\",\n        startsWith(ID, \"Van\") ~ \"NEF\",\n        startsWith(ID, \"Ves\") ~ \"SWF\"\n      ))\n\n#try with and without face_wrap\nggplot(idepth, aes(x=ID, y =MEAN_DEPTH, fill=Population)) +\n  geom_bar(stat = \"identity\") +\n  facet_wrap(~Location, scales = \"free_x\")",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Spoiler: Solutions"
-    ]
-  },
-  {
-    "objectID": "course_solutions.html#plotting-tajimas-d-all-vs-specific-populations",
-    "href": "course_solutions.html#plotting-tajimas-d-all-vs-specific-populations",
-    "title": "Spoiler: Solutions",
-    "section": "Plotting Tajima’s D all vs specific populations",
-    "text": "Plotting Tajima’s D all vs specific populations\nYou can change the type of plots you make. Change headers, xlab, and ylab\n#Plotting Tajima's D\ntaj.combined = read.delim(\"teaching/forest_popgen/all.tajd5000.Tajima.D\", header = T)\ntaj.bil = read.delim(\"teaching/forest_popgen/bil.tajd5000.Tajima.D\", header = T)\n\n#Mutating the add a column for population\ntaj.combined = mutate(taj.combined, Population = \"All\")\ntaj.bil = mutate(taj.bil, Population = \"BIL\")\n\n#combining the dataframes\ncombining.tajd = c('taj.combined', 'taj.bil')\nx.list = lapply(combining.tajd, get)\ncombined.tajd = do.call(rbind, x.list)\n\n#Plotting combined Tajima's D\nggplot(combined.tajd, aes(x= BIN_START, y = TajimaD, col=Population)) +\n  geom_line()",
-    "crumbs": [
-      "Home",
-      "Practicals",
-      "Spoiler: Solutions"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Fungal Population Genomics",
-    "section": "",
-    "text": "This course consists of several different parts. The first part, is the pre-course material in the form of lectures and discussions. The second part is a practical in-person session.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#practical-part-1",
-    "href": "index.html#practical-part-1",
-    "title": "Fungal Population Genomics",
-    "section": "Practical Part 1",
-    "text": "Practical Part 1\nDuring the first part of the practical, we will set up a typical environment with Pixi, set up a Nextflow parameter and configuration, and run the pipeline. We believe it is important to have experience in setting these pipelines up.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#practical-part-2",
-    "href": "index.html#practical-part-2",
-    "title": "Fungal Population Genomics",
-    "section": "Practical Part 2",
-    "text": "Practical Part 2\nFor this course, we will be using the data from this paper: “Population genomics of a forest fungus reveals high gene flow and climate adaptation signatures” by Sønstebø, J. H. et. al. (2022). I have selected this paper because the data complies incredibly well with FAIR Principles. The genomic data we will use is hosted here.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#discussion-material",
-    "href": "index.html#discussion-material",
-    "title": "Fungal Population Genomics",
-    "section": "Discussion Material",
-    "text": "Discussion Material\nIn addition to course material discussions, we will have discussions on the implementation of AI as well as some caution around the use of it. See the section on some leading questions",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "course_nf-core.html",
-    "href": "course_nf-core.html",
-    "title": "nfcore introduction",
-    "section": "",
-    "text": "This page has been provided by Amrei Binzer-Panchal.\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "nfcore introduction"
-    ]
-  },
-  {
-    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "title": "nfcore introduction",
-    "section": "Finding and evaluating a pipeline",
-    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "nfcore introduction"
-    ]
-  },
-  {
-    "objectID": "course_nextflow.html",
-    "href": "course_nextflow.html",
-    "title": "Nextflow",
-    "section": "",
-    "text": "Amrei Binzer-Panchal.\nWhen developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Nextflow"
-    ]
-  },
-  {
-    "objectID": "course_nextflow.html#workflow-managers",
-    "href": "course_nextflow.html#workflow-managers",
-    "title": "Nextflow",
-    "section": "Workflow managers",
-    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Nextflow"
-    ]
-  },
-  {
-    "objectID": "course_nextflow.html#nextflow",
-    "href": "course_nextflow.html#nextflow",
-    "title": "Nextflow",
-    "section": "Nextflow",
-    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
-    "crumbs": [
-      "Home",
-      "Background knowledge",
-      "Nextflow"
     ]
   },
   {
@@ -731,6 +568,78 @@
     ]
   },
   {
+    "objectID": "course_exercises.html",
+    "href": "course_exercises.html",
+    "title": "Discussion Guiding Questions",
+    "section": "",
+    "text": "When do you use AI?\nWhat kinds of AI do you use?\nWhy do you choose to delegate certain tasks to AI?\nHow do you retain agency over your work when there is pressure on you to adopt AI to a large extent?\nHow do you implement the 4 D’s framework?",
+    "crumbs": [
+      "Home",
+      "Discussion",
+      "Discussion Guiding Questions"
+    ]
+  },
+  {
+    "objectID": "course_exercises.html#ai-use",
+    "href": "course_exercises.html#ai-use",
+    "title": "Discussion Guiding Questions",
+    "section": "",
+    "text": "When do you use AI?\nWhat kinds of AI do you use?\nWhy do you choose to delegate certain tasks to AI?\nHow do you retain agency over your work when there is pressure on you to adopt AI to a large extent?\nHow do you implement the 4 D’s framework?",
+    "crumbs": [
+      "Home",
+      "Discussion",
+      "Discussion Guiding Questions"
+    ]
+  },
+  {
+    "objectID": "course_exercises.html#population-genomicsbioinformatics",
+    "href": "course_exercises.html#population-genomicsbioinformatics",
+    "title": "Discussion Guiding Questions",
+    "section": "Population Genomics/Bioinformatics",
+    "text": "Population Genomics/Bioinformatics\n\nWhat are some of the technologies that can be used to produce population genomics data?\n\nLong read vs short read\nSoftware constraints\n\nIs it always sensible to do whole genome sequencing?\nWhat are some things to consider with pooled samples?\nWhat are some things you need to consider when it comes to choosing the sequencing platform?\nWhen might you consider using a ready-made pipeline like the Sarek pipeline over something you have written yourself?\nWhat kind of criteria should you consider when filtering your variants you produce from your variant calling pipeline of choice?\nWhy should you consider more than one k when doing population structure analyses?\nHow can you see population genomics being integrated with other fields of study? (comparative genomics, pangenomics, structural biology?)\nWhat is the future of population genetics/genomics? Where are we heading, and what kinds of data should we be planning to consider?\nHow do we make use of the principles of homology and orthology in functional and structural prediction?\n\ndoes chr match genomewide\nannotate proteins alphafold3 deeploc2\nextract specific gene seq tools\ncircos :/\nHere are some tutorials where you can change assumptions to see how your populations are affected * PopG Online * learnPopGen * POPGENEJS\nIf you would like to master some more bash skills have a look at bandit",
+    "crumbs": [
+      "Home",
+      "Discussion",
+      "Discussion Guiding Questions"
+    ]
+  },
+  {
+    "objectID": "course_exercises.html#end-of-course-evaluation",
+    "href": "course_exercises.html#end-of-course-evaluation",
+    "title": "Discussion Guiding Questions",
+    "section": "End of Course Evaluation",
+    "text": "End of Course Evaluation\n\nDuring the course, you have completed several exercises on a chromosome. As a final assignment, please compile your code and your results into a markdown document and render it. You are welcome to use Quarto or R Markdown.\nExplain what your code does and why you selected certain parameters. (E.g. why did you use a window size of 1000 instead of 100000). Select a region that is under selection on the chromosome you have worked with.\n\n\nExplain what you see in this region and what it tells you about what might be going on in the environment or within the population to result in this signature\nCreate a 3D structure of a protein of interest in this region. Why do you think this region may be experiencing the\n\n\nCompare your results with the findings of the paper. Did subsetting the data make a difference? Why did we do this? What are the impacts?\nWhat are the next steps? What haven’t we done?",
+    "crumbs": [
+      "Home",
+      "Discussion",
+      "Discussion Guiding Questions"
+    ]
+  },
+  {
+    "objectID": "course_nf-core.html",
+    "href": "course_nf-core.html",
+    "title": "nfcore introduction",
+    "section": "",
+    "text": "This page has been provided by Amrei Binzer-Panchal.\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "nfcore introduction"
+    ]
+  },
+  {
+    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "title": "nfcore introduction",
+    "section": "Finding and evaluating a pipeline",
+    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
+    "crumbs": [
+      "Home",
+      "Background knowledge",
+      "nfcore introduction"
+    ]
+  },
+  {
     "objectID": "course_sarek.html",
     "href": "course_sarek.html",
     "title": "Sarek Setup",
@@ -741,5 +650,96 @@
       "Practicals",
       "Sarek Setup"
     ]
+  },
+  {
+    "objectID": "course_pop_stats.html",
+    "href": "course_pop_stats.html",
+    "title": "Population Statistics",
+    "section": "",
+    "text": "A variant call format (VCF) is a type of file that stores all the information regarding variant and non-variant sites of individuals mapped to a reference assembly. This assembly can be a single chromosome, or a collection of scaffolds- there really is no limit!",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#introduction",
+    "href": "course_pop_stats.html#introduction",
+    "title": "Population Statistics",
+    "section": "",
+    "text": "A variant call format (VCF) is a type of file that stores all the information regarding variant and non-variant sites of individuals mapped to a reference assembly. This assembly can be a single chromosome, or a collection of scaffolds- there really is no limit!",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#data-we-will-be-using",
+    "href": "course_pop_stats.html#data-we-will-be-using",
+    "title": "Population Statistics",
+    "section": "Data we will be using",
+    "text": "Data we will be using\nTo get familiar with the kind of tools and data one typically uses in bioinformatics analyses, I have selected a case from literature. 1. Paper: https://onlinelibrary.wiley.com/doi/full/10.1111/mec.16369 2. Data availability: https://datadryad.org/stash/dataset/doi:10.5061/dryad.7d7wm37wr 3. Reference genome: https://mycocosm.jgi.doe.gov/Pheni1/Pheni1.home.html\nTo get around storage and computational time restrictions, you will divide into groups of two and I will assign a scaffold to your group. You’ll try to redo some of the analyses and statistics that are presented in the supplementary material, discover if there are any regions under selection in your scaffold",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#tools-available",
+    "href": "course_pop_stats.html#tools-available",
+    "title": "Population Statistics",
+    "section": "Tools available",
+    "text": "Tools available\nThere are a multitude of tools available for the analysis of VCFs. It is almost entirely up to the researcher as to how they wish to interact with these files. Some bioinformaticians prefer to analyse files in the CLI and only plot the final data in R or python, while others prefer to do everything with R packages. For this part of the workshop, I will show you bits of both aspects.\nOne popular R package for VCF analyses is vcfR (https://cran.r-project.org/web/packages/vcfR/vignettes/intro_to_vcfR.html#:~:text=vcfR%20is%20a%20package%20intended,at%20the%20vcfR%20documentation%20website)\nTo plot data, we will be using ggplot2, and some functions of the dplyr package.",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#r-scripts",
+    "href": "course_pop_stats.html#r-scripts",
+    "title": "Population Statistics",
+    "section": "R scripts",
+    "text": "R scripts\nTo ensure that your plots are easy to understand, it is important to have some metadata stored in the data you wish to plot. This can be sampling location, identity to ancestral genetic population, sampling year, and so on.\nThe data we will be using has really neat identifiers as the individual names start with the population. This should act as an example for you to assign good names to your own data to ensure that as much as possible can be automated to reduce the chance of human error (as careful as you are, mistakes can happen very easily with large amounts of data and automation ensures that mistakes can easily be caught and corrected!) Have a look in the online data to see if you can see where this comes from.\n input_data %&gt;%\n  mutate(Population = case_when(\n    startsWith(ID, \"Bil\") ~ \"bil\",\n    startsWith(ID, \"Bnp\") ~ \"bnp\",\n    startsWith(ID, \"Her\") ~ \"her\",\n    startsWith(ID, \"Iss\") ~ \"iss\",\n    startsWith(ID, \"Kai\") ~ \"kai\",\n    startsWith(ID, \"Koi\") ~ \"koi\",\n    startsWith(ID, \"Kot\") ~ \"kot\",\n    startsWith(ID, \"Luu\") ~ \"luu\",\n    startsWith(ID, \"Met\") ~ \"met\",\n    startsWith(ID, \"Mor\") ~ \"mor\",\n    startsWith(ID, \"Mus\") ~ \"mus\",\n    startsWith(ID, \"Myl\") ~ \"myl\",\n    startsWith(ID, \"Pam\") ~ \"pam\",\n    startsWith(ID, \"Pat\") ~ \"pat\",\n    startsWith(ID, \"Pet\") ~ \"pet\",\n    startsWith(ID, \"Puk\") ~ \"puk\",\n    startsWith(ID, \"Rus\") ~ \"rus\",\n    startsWith(ID, \"Sig\") ~ \"sig\",\n    startsWith(ID, \"Skj\") ~ \"skj\",\n    startsWith(ID, \"eSK\") ~ \"skj\",\n    startsWith(ID, \"Spk\") ~ \"spk\",\n    startsWith(ID, \"Sus\") ~ \"sus\",\n    startsWith(ID, \"Ulv\") ~ \"ulv\",\n    startsWith(ID, \"Van\") ~ \"van\",\n    startsWith(ID, \"Ves\") ~ \"ves\"\n  ))\n\n input_data %&gt;%\n  mutate(Location = case_when(\n    startsWith(ID, \"Bil\") ~ \"Sweden\",\n    startsWith(ID, \"Bnp\") ~ \"Poland\",\n    startsWith(ID, \"Her\") ~ \"SWF\",\n    startsWith(ID, \"Iss\") ~ \"NEF\",\n    startsWith(ID, \"Kai\") ~ \"NEF\",\n    startsWith(ID, \"Koi\") ~ \"NEF\",\n    startsWith(ID, \"Kot\") ~ \"SWF\",\n    startsWith(ID, \"Luu\") ~ \"SWF\",\n    startsWith(ID, \"Met\") ~ \"SWF\",\n    startsWith(ID, \"Mor\") ~ \"Norway\",\n    startsWith(ID, \"Mus\") ~ \"SWF\",\n    startsWith(ID, \"Myl\") ~ \"SWF\",\n    startsWith(ID, \"Pam\") ~ \"NEF\",\n    startsWith(ID, \"Pat\") ~ \"NEF\",\n    startsWith(ID, \"Pet\") ~ \"SWF\",\n    startsWith(ID, \"Puk\") ~ \"SWF\",\n    startsWith(ID, \"Rus\") ~ \"Russia\",\n    startsWith(ID, \"Sig\") ~ \"Norway\",\n    startsWith(ID, \"Skj\") ~ \"Norway\",\n    startsWith(ID, \"eSK\") ~ \"Norway\",\n    startsWith(ID, \"Spk\") ~ \"Norway\",\n    startsWith(ID, \"Sus\") ~ \"SWF\",\n    startsWith(ID, \"Ulv\") ~ \"NEF\",\n    startsWith(ID, \"Van\") ~ \"NEF\",\n    startsWith(ID, \"Ves\") ~ \"SWF\"\n))\nIn the supplementary data, the authors forgot to add the location of the kai population, so I just assigned it to NEF. Let us see if that was the correct designation.\nKey: * SWF: South Western Finland * NEF: North Eastern Finland\nTo change the header of a column in R\n names(df)[names(df) == 'old.var.name'] &lt;- 'new.var.name'\nA basic barplot in ggplot. We can talk about facet wrap,\nggplot(input_file, aes(x=Individual, y =Mean.Depth, fill=Population)) +\ngeom_bar(stat = \"identity\") +\nfacet_wrap(~Location, scales = \"free_x\")",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#assessing-quality-of-the-vcf",
+    "href": "course_pop_stats.html#assessing-quality-of-the-vcf",
+    "title": "Population Statistics",
+    "section": "Assessing quality of the VCF",
+    "text": "Assessing quality of the VCF\nWe have a special version of VCFtools that supports haploid data (https://github.com/jydu/vcftools). Everything remains the same as the original version of VCFtools, with added support for haploid datasets that becomes important for some of the summary statistics. Have a look at the VCFtools manual to see the range of possible functions within this software (https://vcftools.sourceforge.net/man_latest.html).\nIn VCFtools, it is important to remember to use the –recode option if you would like to output a new VCF that is filtered or contains a subset of positions or individuals. –out only sets the name of the output file. Use concise names so that it is easy for you to see what’s in the output.\nLet us start by having a look at the sequencing depth of various aspects of the VCF. From the manual, figure out what each function means. Use less to see what’s in each of these output files.\nvcftools-haploid --vcf --depth \nvcftools --vcf --site-depth \nvcftools --vcf  --site-mean-depth\nNext, we want to see what the quality per site is\nvcftools --vcf --site-quality\nI prefer analysing these outputs in R. From there, decide on upper and lower boundaries to filter the variants on your scaffold. Justify why you think these filtering criteria are suitable.",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "course_pop_stats.html#statistics-per-chromosome",
+    "href": "course_pop_stats.html#statistics-per-chromosome",
+    "title": "Population Statistics",
+    "section": "Statistics per Chromosome",
+    "text": "Statistics per Chromosome\nKeep only the scaffold your group is working on in your folder\nvcftools --vcf --chr --recode\nFor downstream analyses, we need to remove all indels from the VCF\nvcftools --vcf --remove-indels --recode\nFor most analyses, we only consider bi-allelic sites\nvcftools --vcf --min-alleles 2 --max-alleles 2 --recode\nLook at allele frequency\nvcftools --vcf --freq \nTajima’s D in bins\nvcftools --vcf --TajimaD \nPi per site\nvcftools --vcf --site-pi\nPi per window\nvcftools --vcf --window-pi\nFst. Here, create a file of individuals from 6 populations (2 SWF, 2 NEF, Sweden, Poland) that you will use as pop1 and pop2 to do a pairwise Fst analysis to determine what the fixation index is. I have made a list of the individuals per population that you can find in the course repo on Github.\nvcftools --vcf --weir-fst-pop pop1 --weir-fst-pop pop2 -fst-window-size\nPCA that will also be plotted in R. For the PCA, you will plot the eigenvalues to illustrate what each component explains in your data, as well as PC1 and PC2, Pc2 and PC3, and PC3 and PC4.\nplink --vcf --pca\nIf there is a region that is under selection within your data, have a look at the gff3 file to see the genes that are present within the region.\nWith these kinds of analyses, you are very well on the way to finding regions that are under selection by combining Tajima’s D and Fst. You can show which regions have higher SNP density.",
+    "crumbs": [
+      "Home",
+      "Practicals",
+      "Population Statistics"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This course was designed by Anna Berlin, Mikael Durling, and Lizel Potgieter\nThe practical sessions in 2026 will be presented by Mimmi Eriksson"
   }
 ]

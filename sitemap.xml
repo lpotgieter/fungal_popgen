@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_linux.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/about.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_quarto.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_stats.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_containers.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_genome_annotation.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_structure.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_ai.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_exercises.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_solutions.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/index.html</loc>
-    <lastmod>2026-11-03T14:03:08.725Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.979Z</lastmod>
   </url>
   <url>
-    <loc>https://lpotgieter.github.io/fungal_popgen/course_nf-core.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_quarto.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_nextflow.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_solutions.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_ai.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_linux.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_genome_annotation.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_structure.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_ai_literacy.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_pixi.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_exercises.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_nf-core.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
   <url>
     <loc>https://lpotgieter.github.io/fungal_popgen/course_sarek.html</loc>
-    <lastmod>2026-11-03T14:03:08.663Z</lastmod>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/course_pop_stats.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lpotgieter.github.io/fungal_popgen/about.html</loc>
+    <lastmod>2026-11-09T08:07:02.917Z</lastmod>
   </url>
 </urlset>
